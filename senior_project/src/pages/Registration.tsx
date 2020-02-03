@@ -1,19 +1,12 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav } from '@ionic/react';
-import React, { useState, useEffect } from 'react';
-import { loginUser, registerUser } from '../firebaseConfig';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel } from '@ionic/react';
+import React, { useState } from 'react';
+import { registerUser } from '../firebaseConfig';
 import "../style/Login.css";
 
 const Home: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
-
-  async function login() {
-    const res = await loginUser(email, password)
-    if (res){
-      console.log('Succesful login')
-    }
-  }
   
   async function register(){
     //validation
@@ -35,34 +28,42 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-
-      <IonCard className="LoginCard">
+        <IonCard className="LoginCard">
           <IonCardHeader>
             <IonCardTitle>
-              Login
+              Register
             </IonCardTitle>
           </IonCardHeader>
+          
           <IonCardContent>
-            
             <IonItem>
               <IonLabel position="stacked">Email</IonLabel>
               <IonInput
-                placeholder="Email?"
+                placeholder="Email"
                 onIonChange={(e: any) => setEmail(e.target.value)}
               />
             </IonItem>
-
+              
             <IonItem>
               <IonLabel position="stacked">Password</IonLabel>
               <IonInput
                 type="password"
-                placeholder="Password?"
+                placeholder="Password"
                 onIonChange={(e: any) => setPassword(e.target.value)}
               />
             </IonItem>
-            <IonButton className="LoginButton" onClick={login}>Login</IonButton>
-            <IonButton className="LoginButton" routerLink="/registration/">Register</IonButton>
-            </IonCardContent>
+            
+            <IonItem>
+              <IonLabel position="stacked">Confirm Password</IonLabel>
+              <IonInput
+              type="password"
+              placeholder="Confirm Password?"
+              onIonChange={(e: any) => setCPassword(e.target.value)}
+              />
+            </IonItem>
+            
+            <IonButton className="LoginButton" onClick={register} routerLink="/registration">Register</IonButton>
+          </IonCardContent>
         </IonCard>
       </IonContent>
     </IonPage>
@@ -70,3 +71,6 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+
+

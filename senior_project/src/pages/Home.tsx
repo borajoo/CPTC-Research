@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav, IonIcon } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { loginUser, registerUser } from '../firebaseConfig';
 import "../style/Login.css";
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Register</IonTitle>
+          <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
               />
             </IonItem>
             <IonButton className="LoginButton" onClick={login}>Login</IonButton>
-            <IonButton className="LoginButton" routerLink="/registration/">Register</IonButton>
+            <IonButton className="LoginButton" routerLink="/registration/">New User? Register</IonButton>
             </IonCardContent>
         </IonCard>
       </IonContent>

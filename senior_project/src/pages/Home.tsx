@@ -1,16 +1,21 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav, IonIcon } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
-import { loginUser, registerUser } from '../firebaseConfig'
+import { loginUser, registerUser } from '../firebaseConfig';
+import "../style/Login.css";
+import { toast } from '../toast'
 
 const Home: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
-  
+
   async function login() {
     const res = await loginUser(email, password)
-    if (res){
-      console.log('Succesful login')
+    if (res) {
+      toast('You have logged in!');
+    }
+    else {
+      toast('Error logging in with your credentials');
     }
   }
   
@@ -30,35 +35,39 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Register</IonTitle>
+          <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <IonInput
-          placeholder="Email?"
-          onIonChange={(e: any) => setEmail(e.target.value)}
-        />
-        <IonInput
-          type="password"
-          placeholder="Password?"
-          onIonChange={(e: any) => setPassword(e.target.value)}
-        />
-        <IonButton onClick={login}>Login</IonButton>
-        <IonInput
-          placeholder="Email?"
-          onIonChange={(e: any) => setEmail(e.target.value)}
-        />
-        <IonInput
-          type="password"
-          placeholder="Password?"
-          onIonChange={(e: any) => setPassword(e.target.value)}
-        />
-        <IonInput
-          type="password"
-          placeholder="Confirm Password?"
-          onIonChange={(e: any) => setCPassword(e.target.value)}
-        />
-        <IonButton onClick={register}>Register</IonButton>
+
+      <IonCard className="LoginCard">
+          <IonCardHeader>
+            <IonCardTitle>
+              Login
+            </IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            
+            <IonItem>
+              <IonLabel position="stacked">Email</IonLabel>
+              <IonInput
+                placeholder="Email?"
+                onIonChange={(e: any) => setEmail(e.target.value)}
+              />
+            </IonItem>
+
+            <IonItem>
+              <IonLabel position="stacked">Password</IonLabel>
+              <IonInput
+                type="password"
+                placeholder="Password?"
+                onIonChange={(e: any) => setPassword(e.target.value)}
+              />
+            </IonItem>
+            <IonButton className="LoginButton" onClick={login}>Login</IonButton>
+            <IonButton className="LoginButton" routerLink="/registration/">New User? Register</IonButton>
+            </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );

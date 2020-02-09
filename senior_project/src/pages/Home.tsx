@@ -22,12 +22,12 @@ const Home: React.FC = () => {
   async function register(){
     //validation
     if(password !== cpassword){
-      console.log('Passwords do not match')
+      toast('Passwords do not match')
     }
     
     const res = await registerUser(email, password)
     if (res){
-      console.log('Sucessful register')
+      toast('Sucessful register')
     }
   }
   

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { arrowBack } from 'ionicons/icons'
 import { registerUser } from '../firebaseConfig'
 import { toast } from '../toast'
-
 import "../style/Login.css";
 
 const Home: React.FC = () => {

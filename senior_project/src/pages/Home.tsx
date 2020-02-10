@@ -2,8 +2,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem,
 import React, { useState, useEffect } from 'react';
 import { loginUser, registerUser } from '../firebaseConfig';
 import "../style/Login.css";
+import { Redirect, RouteComponentProps } from 'react-router';
 
-const Home: React.FC = () => {
+const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
@@ -11,7 +12,8 @@ const Home: React.FC = () => {
   async function login() {
     const res = await loginUser(email, password)
     if (res){
-      console.log('Succesful login')
+      console.log('Succesful login');
+      history.push('landingPage');
     }
   }
   
@@ -23,50 +25,53 @@ const Home: React.FC = () => {
     
     const res = await registerUser(email, password)
     if (res){
-      console.log('Sucessful register')
+      console.log('Sucessful register');
     }
   }
+
   
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
+  <IonPage>
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>Login</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+    <IonContent className="ion-padding">
 
-      <IonCard className="LoginCard">
-          <IonCardHeader>
-            <IonCardTitle>
-              Login
-            </IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            
-            <IonItem>
-              <IonLabel position="stacked">Email</IonLabel>
-              <IonInput
-                placeholder="Email?"
-                onIonChange={(e: any) => setEmail(e.target.value)}
-              />
-            </IonItem>
+    <IonCard className="LoginCard">
+        <IonCardHeader>
+          <IonCardTitle>
+            Login
+          </IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          
+          <IonItem>
+            <IonLabel position="stacked">Email</IonLabel>
+            <IonInput
+              placeholder="Email?"
+              onIonChange={(e: any) => setEmail(e.target.value)}
+            />
+          </IonItem>
 
-            <IonItem>
-              <IonLabel position="stacked">Password</IonLabel>
-              <IonInput
-                type="password"
-                placeholder="Password?"
-                onIonChange={(e: any) => setPassword(e.target.value)}
-              />
-            </IonItem>
-            <IonButton className="LoginButton" onClick={login}>Login</IonButton>
-            <IonButton className="LoginButton" routerLink="/registration/">New User? Register</IonButton>
-            </IonCardContent>
-        </IonCard>
-      </IonContent>
-    </IonPage>
-  );
+          <IonItem>
+            <IonLabel position="stacked">Password</IonLabel>
+            <IonInput
+              type="password"
+              placeholder="Password?"
+              onIonChange={(e: any) => setPassword(e.target.value)}
+            />
+          </IonItem>
+          <IonButton className="LoginButton" onClick={login}>Login</IonButton>
+          <IonButton className="LoginButton" routerLink="/registration/">New User? Register</IonButton>
+          </IonCardContent>
+      </IonCard>
+    </IonContent>
+  </IonPage>
+);
+  
+  
 };
 
 export default Home;

@@ -13,6 +13,10 @@ const config = {
 
 firebase.initializeApp(config)
 
+export function logoutUser() {
+    return firebase.auth().signOut()
+}
+
 export async function loginUser(email: string, password: string) {
     // authenticate with firebase
     try {

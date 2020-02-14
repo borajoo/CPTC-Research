@@ -1,15 +1,22 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem,  IonButton, IonCard, IonCardContent } from '@ionic/react';
 import React from 'react';
+import { logoutUser } from '../firebaseConfig'
 import { RouteComponentProps } from 'react-router';
 import "../style/LandingPage.css";
+import { toast } from '../toast'
 
 
 const LandingPage: React.FC<RouteComponentProps> = ({history}) => {
   
   let appName = "ThermalComfort";
-  function logout() {
+  
+  async function logout(){
+    await logoutUser()
+    console.log('Succesful logout');
+    toast('You have logged out!')
     history.push('/home');
   }
+  
   return (
     <IonPage>
       <IonHeader>

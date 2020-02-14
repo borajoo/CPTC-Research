@@ -8,8 +8,15 @@ const LandingPage: React.FC<RouteComponentProps> = ({history}) => {
   
   let appName = "ThermalComfort";
   function logout() {
+    console.log("Hello logout");
     history.push('/home');
   }
+
+  function launchSurvey() {
+    console.log("HEllO wurvey");
+    history.push('/survey');
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -22,7 +29,7 @@ const LandingPage: React.FC<RouteComponentProps> = ({history}) => {
         <IonCard className="LandingCard">
             <IonCardContent>
                 <IonItem>
-                <IonButton className="LandingButton">
+                <IonButton  onClick={launchSurvey} className="LandingButton">
                     Take Survey
                 </IonButton>
                 </IonItem>

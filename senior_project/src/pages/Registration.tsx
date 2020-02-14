@@ -1,7 +1,8 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonIcon } from '@ionic/react';
-import React, { useState } from 'react';
-import {  arrowBack } from 'ionicons/icons'
-import { registerUser } from '../firebaseConfig';
+import React, { useState } from 'react'
+import { arrowBack } from 'ionicons/icons'
+import { registerUser } from '../firebaseConfig'
+import { toast } from '../toast'
 import "../style/Login.css";
 
 const Home: React.FC = () => {
@@ -12,12 +13,13 @@ const Home: React.FC = () => {
   async function register(){
     //validation
     if(password !== cpassword){
-      console.log('Passwords do not match')
+      toast('Passwords do not match')
+      return false;
     }
     
     const res = await registerUser(email, password)
     if (res){
-      console.log('Sucessful register')
+      toast('Sucessful register')
     }
   }
   

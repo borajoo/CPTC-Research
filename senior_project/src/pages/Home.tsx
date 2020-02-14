@@ -1,8 +1,9 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav, IonIcon } from '@ionic/react';
-import React, { useState, useEffect } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel } from '@ionic/react';
+import React, { useState } from 'react';
 import { loginUser, registerUser } from '../firebaseConfig';
 import "../style/Login.css";
-import { Redirect, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
+import { toast } from '../toast'
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
@@ -11,21 +12,24 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
 
   async function login() {
     const res = await loginUser(email, password)
+
     if (res){
       console.log('Succesful login');
       history.push('landingPage');
+    } else {
+      toast('Error logging in with your credentials');
     }
   }
   
   async function register(){
     //validation
     if(password !== cpassword){
-      console.log('Passwords do not match')
+      toast('Passwords do not match')
     }
     
     const res = await registerUser(email, password)
     if (res){
-      console.log('Sucessful register');
+      toast('Sucessful register')
     }
   }
 
@@ -70,7 +74,6 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     </IonContent>
   </IonPage>
 );
-  
   
 };
 

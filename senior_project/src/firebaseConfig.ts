@@ -1,3 +1,4 @@
+import { toast } from './toast'
 import * as firebase from 'firebase'
 
 const config = {
@@ -20,7 +21,7 @@ export async function loginUser(email: string, password: string) {
         console.log(res)
         return true;
     } catch(error) {
-        console.log(error)
+        toast(error.message, 4000)
         return false;
     } 
 }
@@ -32,7 +33,7 @@ export async function registerUser(email: string, password: string) {
         console.log(res)
         return true;
     } catch(error) {
-        console.log(error)
+        toast(error.message, 4000)
         return false;
     } 
 }

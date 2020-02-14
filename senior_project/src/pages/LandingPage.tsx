@@ -1,12 +1,15 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText, IonItem, IonList, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonNav, IonIcon } from '@ionic/react';
-import React, { useState, useEffect } from 'react';
-import { loginUser, registerUser } from '../firebaseConfig';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem,  IonButton, IonCard, IonCardContent } from '@ionic/react';
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
 import "../style/LandingPage.css";
 
-const LandingPage: React.FC = () => {
+
+const LandingPage: React.FC<RouteComponentProps> = ({history}) => {
   
   let appName = "ThermalComfort";
-  
+  function logout() {
+    history.push('/home');
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -31,7 +34,7 @@ const LandingPage: React.FC = () => {
                 </IonItem>
 
                 <IonItem>
-                    <IonButton className="LandingButton">
+                    <IonButton onClick={logout} className="LandingButton">
                         Logout
                     </IonButton>
                 </IonItem>

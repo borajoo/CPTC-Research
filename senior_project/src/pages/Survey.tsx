@@ -1,13 +1,16 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
+import "../style/Survey.css";
 import { RouteComponentProps } from 'react-router';
 
-const Survey: React.FC<RouteComponentProps> = ({history}) => {
+const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
-
+    const state: any = location.state;
+    
     let dataPoint:any = {
         thermalSensation: '',
+        uid: state.uid
     };
     const sensationOptions = [
         {
@@ -95,6 +98,18 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
         console.log(dataPoint);
     }
 
+    function  postData() {
+        console.log(dataPoint);
+    }
+
+    function selectBuildingNumber(e:any) {
+        dataPoint.buildingNumber = e.detail.value;
+    }
+
+    function selectRoomNumber(e:any) {
+        dataPoint.roomNumber = e.detail.value;
+    }
+
   return (
   <IonPage>
     <IonHeader>
@@ -112,8 +127,8 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
         <IonCardContent>
            
           <IonItem>
-              <IonLabel>Select Your Thermal Sensation</IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectThermalSensation(e)}>
+            <IonLabel position="stacked" className="questionLabel">Select Your Thermal Sensation</IonLabel>
+            <IonSelect className="questionSelect" placeholder="Select One" onIonChange={e => selectThermalSensation(e)}>
             {sensationOptions.map((object, i) => {
                 return (
                 <IonSelectOption  onSelect={selectThermalSensation} key={i} value={object.first}>
@@ -126,7 +141,7 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel> Select Your Thermal Comfort </IonLabel>
+              <IonLabel position="stacked"> Select Your Thermal Comfort </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectThermalComfort(e)}>
             {thermalComfortOptions.map((object, i) => {
                 return (
@@ -139,7 +154,7 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel className="surveyLabel"> Select The Air Velocity</IonLabel>
+              <IonLabel position="stacked" className="surveyLabel"> Select The Air Velocity</IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectAirVelocity(e)}>
             {airVelocityOptions.map((object, i) => {
                 return (
@@ -152,7 +167,7 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel className="surveyLabel"> Select The Humidity Sensation </IonLabel>
+              <IonLabel position="stacked" className="surveyLabel"> Select The Humidity Sensation </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectHumiditySensation(e)}>
             {humiditySensationOptions.map((object, i) => {
                 return (
@@ -165,7 +180,7 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel> Select Thermal Preference </IonLabel>
+              <IonLabel position="stacked"> Select Thermal Preference </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectThermalPreference(e)}>
             {thermalPreferenceOptions.map((object, i) => {
                 return (
@@ -178,7 +193,7 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel> Select acceptability </IonLabel>
+              <IonLabel position="stacked"> Select acceptability </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectAcceptability(e)}>
             {acceptabilityOptions.map((object, i) => {
                 return (
@@ -190,7 +205,23 @@ const Survey: React.FC<RouteComponentProps> = ({history}) => {
             </IonSelect>
           </IonItem>
 
+          <IonItem>
+              <IonLabel position="stacked"> Input Building Number</IonLabel>
+                <IonInput type="number" inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
+          </IonItem>
+
+          <IonItem>
+              <IonLabel position="stacked"> Input Room Number</IonLabel>
+                <IonInput type="number" inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
+          </IonItem>
+
+
+
+        
           </IonCardContent>
+          <IonButton className="SubmitButton" onClick={postData}>
+              Submit
+          </IonButton>
       </IonCard>
     </IonContent>
   </IonPage>

@@ -4,17 +4,18 @@ import { RouteComponentProps } from 'react-router';
 import "../style/LandingPage.css";
 
 
-const LandingPage: React.FC<RouteComponentProps> = ({history}) => {
-  
+const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
+
   let appName = "ThermalComfort";
   function logout() {
-    console.log("Hello logout");
     history.push('/home');
   }
 
   function launchSurvey() {
-    console.log("HEllO wurvey");
-    history.push('/survey');
+    if (location.state) {
+      history.push('/survey', location.state);
+    }
+    
   }
 
   return (

@@ -13,9 +13,13 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
   async function login() {
     const res = await loginUser(email, password)
 
-    if (res){
+    if (res && res.user){
       console.log('Succesful login');
-      history.push('landingPage');
+      console.log(res.user.uid);
+      history.push({
+        pathname: 'landingPage',
+        state: { uid: res.user.uid},
+      });
     } else {
       toast('Error logging in with your credentials');
     }

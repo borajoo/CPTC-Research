@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption, IonRange } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";
@@ -67,7 +67,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         thermalPreferenceOptions.push({id: i+1, first: thermalPreference[i]});
     }
 
-    let acceptability = ["Acceptable", "Not Acceptable"];
+    let acceptability = ["", "", "Acceptable", "Not Acceptable"];
     let acceptabilityOptions = [];
     for (let i = 0; i < acceptability.length; i++) {
         acceptabilityOptions.push({id:i+1, first: acceptability[i]});
@@ -204,6 +204,12 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
             })}
             </IonSelect>
           </IonItem>
+
+          <IonItem>
+            <IonLabel position="stacked"> Very Unacceptable to Very Acceptable </IonLabel>
+            <IonRange min={-3} max={3} color="secondary">
+          </IonRange>
+        </IonItem>
 
           <IonItem>
               <IonLabel position="stacked"> Input Building Number</IonLabel>

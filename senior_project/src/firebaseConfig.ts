@@ -13,6 +13,19 @@ const config = {
 
 firebase.initializeApp(config)
 
+export async function pushData(data: any, user: string) { 
+    firebase.firestore().collection('tempPoint').add({ 
+        thermalSensation: data.thermalSensation, 
+        thermalComfort: data.thermalComfort,
+         airVelocity: data.airVelocity,
+          humiditySensation: data.humiditySensation,
+           thermalPreference: data.thermalPreference,
+            acceptability: data.acceptability,
+             buildingNumber: data.buildingNumber,
+             clothingLevel: data.clothingLevel,
+             recentAction: data.recentAction,
+              roomNumber: data.roomNumber, userId: user })
+
 export function logoutUser() {
     return firebase.auth().signOut()
 }
@@ -23,7 +36,7 @@ export async function loginUser(email: string, password: string) {
         const res = await firebase.auth().signInWithEmailAndPassword(email, password)
 
         console.log(res)
-        return true;
+        return res;
     } catch(error) {
         toast(error.message, 4000)
         return false;

@@ -5,6 +5,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
 import LandingPage from './pages/LandingPage';
+import Survey from './pages/Survey';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,6 +34,7 @@ const App: React.FC = () => (
         <Route exact path="/" render={() => <Redirect to="/home" />} />
         <Route path="/registration" component={Registration} exact={true} />
         <Route path="/landingPage" component={LandingPage} exact={true} />
+        <Route path="/survey" component={Survey} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

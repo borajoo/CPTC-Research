@@ -3,6 +3,7 @@ import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";
 import { RouteComponentProps } from 'react-router';
+import { pushData } from '../firebaseConfig';
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
@@ -67,10 +68,38 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         thermalPreferenceOptions.push({id: i+1, first: thermalPreference[i]});
     }
 
-    let acceptability = ["", "", "Acceptable", "Not Acceptable"];
+    let acceptability = ["Acceptable", "Not Acceptable"];
     let acceptabilityOptions = [];
     for (let i = 0; i < acceptability.length; i++) {
         acceptabilityOptions.push({id:i+1, first: acceptability[i]});
+    }
+
+    let clothingLevel = [
+        "Walking short, short sleeves shirt", 
+        "Typical summer indoor clothing", 
+        "Knee-length skirt, short-sleeve shirt, sandals, underwear",
+        "Trousers, short-sleeve shirt, socks, shoes, underwear",
+        "Trousers, long-sleeve shirt",
+        "Knee-length skirt, long-sleeve shirt, full slip",
+        "Sweatpants, long-sleeve sweatshirt",
+        "Jacket, trousers, long-sleeve shirt",
+        "Typical winter indoor clothing"
+    ];    
+    let clothingLevelOptions = [];
+    for (let i = 0 ; i < clothingLevel.length; i++) {
+        clothingLevelOptions.push({id: i+1, first: clothingLevel[i]});
+    }
+
+    let recentAction = [
+        "Seated, quiet",
+        "Standing relaxed",
+        "Walking 2mph",
+        "Walking 3mph",
+        "Waling 4mph",
+    ];
+    let recentActionOptions = [];
+    for (let i = 0 ; i < recentAction.length; i++) {
+        recentActionOptions.push({id: i+1, first: recentAction[i]});
     }
 
     function selectThermalSensation(e:any) {
@@ -94,12 +123,25 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     }
 
     function selectAcceptability(e:any) {
-        dataPoint.acceptability = e.detail.value;
-        console.log(dataPoint);
+        dataPoint.acceptability = e.detail.value/10.0;
+        if (dataPoint.acceptability == 0.0) {
+            dataPoint.acceptability = -0.1;
+        }
+    }
+
+    function selectRecentAction(e:any) {
+        dataPoint.recentAction = e.detail.value;
+    }
+
+    function selectClothingLevel(e:any) {
+        dataPoint.clothingLevel = e.detail.value;
     }
 
     function  postData() {
-        console.log(dataPoint);
+        if (state.uid) {
+            pushData(dataPoint, state.uid);
+            history.push('/landingPage')
+        }
     }
 
     function selectBuildingNumber(e:any) {
@@ -193,9 +235,9 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select acceptability </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectAcceptability(e)}>
-            {acceptabilityOptions.map((object, i) => {
+              <IonLabel position="stacked"> Select Clothing Level </IonLabel>
+            <IonSelect placeholder="Select One" onIonChange={e => selectClothingLevel(e)}>
+            {clothingLevelOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
                     {object.first}
@@ -206,10 +248,35 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
+              <IonLabel position="stacked"> Select Recent Action</IonLabel>
+            <IonSelect placeholder="Select One" onIonChange={e => selectRecentAction(e)}>
+            {recentActionOptions.map((object, i) => {
+                return (
+                <IonSelectOption key={i} value={object.first}>
+                    {object.first}
+                </IonSelectOption>
+                );
+            })}
+            </IonSelect>
+          </IonItem>
+
+          {/* <IonItem>
+              <IonLabel position="stacked"> Select acceptability </IonLabel>
+            <IonSelect placeholder="Select One" onIonChange={e => selectAcceptability(e)}>
+            {acceptabilityOptions.map((object, i) => {
+                return (
+                <IonSelectOption key={i} value={object.first}>
+                    {object.first}
+                </IonSelectOption>
+                );
+            })}
+            </IonSelect>
+          </IonItem> */}
+
+          <IonItem>
             <IonLabel position="stacked"> Very Unacceptable to Very Acceptable </IonLabel>
-            <IonRange min={-3} max={3} color="secondary">
-          </IonRange>
-        </IonItem>
+            <IonRange min={-30} max={30} color="secondary" onIonChange= { e => selectAcceptability(e)}></IonRange>
+          </IonItem>
 
           <IonItem>
               <IonLabel position="stacked"> Input Building Number</IonLabel>
@@ -220,9 +287,6 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
               <IonLabel position="stacked"> Input Room Number</IonLabel>
                 <IonInput type="number" inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
           </IonItem>
-
-
-
         
           </IonCardContent>
           <IonButton className="SubmitButton" onClick={postData}>

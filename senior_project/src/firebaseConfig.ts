@@ -13,7 +13,6 @@ const config = {
 
 firebase.initializeApp(config)
 
-
 export async function pushData(data: any, user: string) { 
     firebase.firestore().collection('tempPoint').add({ 
         thermalSensation: data.thermalSensation, 
@@ -26,6 +25,9 @@ export async function pushData(data: any, user: string) {
              clothingLevel: data.clothingLevel,
              recentAction: data.recentAction,
               roomNumber: data.roomNumber, userId: user })
+
+export function logoutUser() {
+    return firebase.auth().signOut()
 }
 
 export async function loginUser(email: string, password: string) {

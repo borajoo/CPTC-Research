@@ -248,8 +248,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select Recent Action</IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectRecentAction(e)}>
+              <IonLabel position="stacked"> Select Activities performed in the last 10 minutes</IonLabel>
+            <IonSelect multiple={true} placeholder="Select One" onIonChange={e => selectRecentAction(e)}>
             {recentActionOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
@@ -280,12 +280,12 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
           <IonItem>
               <IonLabel position="stacked"> Input Building Number</IonLabel>
-                <IonInput type="number" inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
+                <IonInput inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
           </IonItem>
 
           <IonItem>
               <IonLabel position="stacked"> Input Room Number</IonLabel>
-                <IonInput type="number" inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
+                <IonInput inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
           </IonItem>
         
           </IonCardContent>

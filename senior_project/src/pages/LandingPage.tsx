@@ -8,7 +8,7 @@ import { toast } from '../toast'
 
 const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
 
-  let appName = "ThermalComfort";
+  let appName = "CPTC";
   
   async function logout(){
     await logoutUser()

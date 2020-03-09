@@ -1,8 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonIcon } from '@ionic/react';
-import React, { useState } from 'react'
-import { arrowBack } from 'ionicons/icons'
-import { registerUser } from '../firebaseConfig'
-import { toast } from '../toast'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonIcon } from '@ionic/react';
+import React, { useState } from 'react';
+import { arrowBack } from 'ionicons/icons';
+import { registerUser } from '../firebaseConfig';
+import { toast } from '../toast';
 import "../style/Login.css";
 
 const Home: React.FC = () => {
@@ -27,7 +27,9 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButton className="backButton" size="small" routerLink="/home"> <IonIcon class="backArrow" icon={arrowBack}></IonIcon></IonButton>
+        <IonButtons slot="start">
+            <IonBackButton defaultHref="/home" />
+        </IonButtons>
           <IonTitle>
             <h3 className="title">Register</h3>
           </IonTitle>

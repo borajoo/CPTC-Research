@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^1.5.0",
+    "@capacitor/core": "1.5.0",
     "@ionic/react": "^4.11.8",
     "@ionic/react-router": "^4.11.8",
     "@testing-library/jest-dom": "^4.2.4",
@@ -45,6 +47,7 @@
   },
   "description": "An Ionic project",
   "devDependencies": {
+    "@capacitor/cli": "1.5.0",
     "@types/firebase": "^3.2.1",
     "react-scripts": "3.3.0"
   }

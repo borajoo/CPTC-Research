@@ -11,7 +11,7 @@ const config = {
     appId: "1:683582280356:web:39f0e8e22efe1d57d18c31"
 }
 
-firebase.initializeApp(config)
+firebase.initializeApp(config);
 
 export async function pushData(data: any, user: string) { 
     firebase.firestore().collection('tempPoint').add({ 
@@ -24,7 +24,8 @@ export async function pushData(data: any, user: string) {
              buildingNumber: data.buildingNumber,
              clothingLevel: data.clothingLevel,
              recentAction: data.recentAction,
-              roomNumber: data.roomNumber, userId: user })
+              roomNumber: data.roomNumber, userId: user });
+}
 
 export function logoutUser() {
     return firebase.auth().signOut()
@@ -46,11 +47,11 @@ export async function loginUser(email: string, password: string) {
 export async function registerUser(email: string, password: string) {
     // authenticate with firebase
     try {
-        const res = await firebase.auth().createUserWithEmailAndPassword(email, password)
-        console.log(res)
+        const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        console.log(res);
         return true;
     } catch(error) {
-        toast(error.message, 4000)
+        toast(error.message, 4000);
         return false;
     } 
 }

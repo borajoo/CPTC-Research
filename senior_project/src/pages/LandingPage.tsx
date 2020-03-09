@@ -8,7 +8,7 @@ import { toast } from '../toast'
 
 const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
 
-  let appName = "ThermalComfort";
+  let appName = "CPTC";
   
   async function logout(){
     await logoutUser()
@@ -20,8 +20,13 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
   function launchSurvey() {
     if (location.state) {
       history.push('/survey', location.state);
+    } 
+  }
+
+  function launchNotifications() {
+    if (location.state) {
+      history.push('/notifications', location.state);
     }
-    
   }
 
   return (
@@ -35,19 +40,19 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
 
         <IonCard className="LandingCard">
             <IonCardContent>
-                <IonItem>
+                <IonItem lines="none">
                 <IonButton  onClick={launchSurvey} className="LandingButton">
                     Take Survey
                 </IonButton>
                 </IonItem>
 
-                <IonItem>
-                <IonButton className="LandingButton">
+                <IonItem lines="none">
+                <IonButton  onClick={launchNotifications} className="LandingButton">
                     Edit Notifications
                 </IonButton>
                 </IonItem>
 
-                <IonItem>
+                <IonItem lines="none">
                     <IonButton onClick={logout} className="LandingButton">
                         Logout
                     </IonButton>

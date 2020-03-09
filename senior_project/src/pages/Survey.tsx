@@ -1,8 +1,9 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption, IonRange } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, IonItem, IonButtons, IonIcon, IonNote, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption, IonRange } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";
 import { RouteComponentProps } from 'react-router';
+import { arrowBack } from 'ionicons/icons';
 import { pushData } from '../firebaseConfig';
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
@@ -156,11 +157,14 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
   <IonPage>
     <IonHeader>
       <IonToolbar>
+        <IonButtons slot="start">
+            <IonBackButton defaultHref="/landingPage" />
+        </IonButtons>
         <IonTitle>Survey</IonTitle>
       </IonToolbar>
     </IonHeader>
     <IonContent className="ion-padding">
-    <IonCard className="LoginCard">
+    <IonCard className="surveyCard">
         <IonCardHeader>
           <IonCardTitle>
             Thermal Questions
@@ -260,23 +264,15 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
             </IonSelect>
           </IonItem>
 
-          {/* <IonItem>
-              <IonLabel position="stacked"> Select acceptability </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectAcceptability(e)}>
-            {acceptabilityOptions.map((object, i) => {
-                return (
-                <IonSelectOption key={i} value={object.first}>
-                    {object.first}
-                </IonSelectOption>
-                );
-            })}
-            </IonSelect>
-          </IonItem> */}
-
+          <IonItem lines="none">
+            <IonNote slot="start" className="sliderLabelLeft"> Very Unacceptable</IonNote>
+            <IonNote slot="end" className="sliderLabelRight"> Very Acceptable</IonNote>
+          </IonItem>
+          
           <IonItem>
-            <IonLabel position="stacked"> Very Unacceptable to Very Acceptable </IonLabel>
             <IonRange min={-30} max={30} color="secondary" onIonChange= { e => selectAcceptability(e)}></IonRange>
           </IonItem>
+          
 
           <IonItem>
               <IonLabel position="stacked"> Input Building Number</IonLabel>

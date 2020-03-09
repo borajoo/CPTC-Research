@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Registration from './pages/Registration';
 import LandingPage from './pages/LandingPage';
 import Survey from './pages/Survey';
-
+import Notifications from './pages/Notifications';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -35,6 +35,7 @@ const App: React.FC = () => (
         <Route path="/registration" component={Registration} exact={true} />
         <Route path="/landingPage" component={LandingPage} exact={true} />
         <Route path="/survey" component={Survey} exact={true} />
+        <Route path="/notifications" component={Notifications} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

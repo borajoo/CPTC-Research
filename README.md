@@ -8,8 +8,11 @@
   
   Firebase + React: https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial
 
-Push Data Point to Firebase:
+Data Table install:
+npm install react-data-table-component styled-components
 
+
+Push Data Point to Firebase:
 export async function pushData(data: any, user: string) {
     firebase.firestore().collection('tempPoint').add({
         thermalSensation: data.thermalSensation,

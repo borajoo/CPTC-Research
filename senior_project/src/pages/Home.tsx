@@ -14,8 +14,6 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     const res = await loginUser(email, password)
 
     if (res && res.user){
-      console.log('Succesful login');
-      console.log(res.user.uid);
       history.push({
         pathname: 'landingPage',
         state: { uid: res.user.uid},

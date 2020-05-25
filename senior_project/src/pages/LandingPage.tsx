@@ -12,7 +12,6 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
   
   async function logout(){
     await logoutUser()
-    console.log('Succesful logout');
     toast('You have logged out!')
     history.push('/home');
   }

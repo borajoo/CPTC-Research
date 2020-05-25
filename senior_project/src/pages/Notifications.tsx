@@ -24,7 +24,6 @@ const Notifications: React.FC<RouteComponentProps> = ({history, location}) => {
     }
 
     function postNotifications() {
-        console.log("updating Notifications");
         // pushing notification1 and notification2 to firebase...
     }
 

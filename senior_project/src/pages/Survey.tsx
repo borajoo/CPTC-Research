@@ -5,14 +5,20 @@ import "../style/Survey.css";
 import { RouteComponentProps } from 'react-router';
 import { arrowBack } from 'ionicons/icons';
 import { pushData } from '../firebaseConfig';
+var request = require('request');
+
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
+
 
     const state: any = location.state;
     
     let dataPoint:any = {
         thermalSensation: '',
-        uid: state.uid
+        uid: state.uid,
+        temp: 0,
+        humidiy: 0,
+        windspeed: 0,
     };
     const sensationOptions = [
         {
@@ -153,6 +159,26 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         dataPoint.roomNumber = e.detail.value;
     }
 
+    function getWeatherData(e:any){
+        let apiKey = 'a28b0237f94d95bbd08c26352f7c7bdb';
+        let city = e.detail.value;
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        request(url, function (err:any, response:any, body:any) {
+            if(err){
+                return;
+            } else {
+              if (body.cod !== "404") {
+                let weatherData = JSON.parse(body);
+                if (weatherData.main) {
+                    dataPoint.temp = weatherData.main.temp;
+                    dataPoint.windspeed = weatherData.wind.speed; 
+                    dataPoint.humidity = weatherData.main.humidity;
+                }
+              }
+            }
+          });
+    }
+
   return (
   <IonPage>
     <IonHeader>
@@ -173,7 +199,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         <IonCardContent>
            
           <IonItem>
-            <IonLabel position="stacked" className="questionLabel">Select Your Thermal Sensation</IonLabel>
+            <IonLabel position="stacked" className="questionLabel">What is your Thermal Sensation? </IonLabel>
             <IonSelect className="questionSelect" placeholder="Select One" onIonChange={e => selectThermalSensation(e)}>
             {sensationOptions.map((object, i) => {
                 return (
@@ -187,7 +213,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select Your Thermal Comfort </IonLabel>
+              <IonLabel position="stacked"> What is your Thermal Comfort Level? </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectThermalComfort(e)}>
             {thermalComfortOptions.map((object, i) => {
                 return (
@@ -200,7 +226,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked" className="surveyLabel"> Select The Air Velocity</IonLabel>
+              <IonLabel position="stacked" className="surveyLabel"> What is the Air Velocity? </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectAirVelocity(e)}>
             {airVelocityOptions.map((object, i) => {
                 return (
@@ -213,7 +239,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked" className="surveyLabel"> Select The Humidity Sensation </IonLabel>
+              <IonLabel position="stacked" className="surveyLabel"> What is the Humidity Sensation? </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectHumiditySensation(e)}>
             {humiditySensationOptions.map((object, i) => {
                 return (
@@ -226,7 +252,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select Thermal Preference </IonLabel>
+              <IonLabel position="stacked"> What is your Thermal Preference? </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectThermalPreference(e)}>
             {thermalPreferenceOptions.map((object, i) => {
                 return (
@@ -239,7 +265,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select Clothing Level </IonLabel>
+              <IonLabel position="stacked"> What is your Clothing Level? </IonLabel>
             <IonSelect placeholder="Select One" onIonChange={e => selectClothingLevel(e)}>
             {clothingLevelOptions.map((object, i) => {
                 return (
@@ -252,7 +278,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Select Activities performed in the last 10 minutes</IonLabel>
+              <IonLabel position="stacked"> What activities have you performed in the last 10 minutes?</IonLabel>
             <IonSelect multiple={true} placeholder="Select One" onIonChange={e => selectRecentAction(e)}>
             {recentActionOptions.map((object, i) => {
                 return (
@@ -265,8 +291,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem lines="none">
-            <IonNote slot="start" className="sliderLabelLeft"> Very Unacceptable</IonNote>
-            <IonNote slot="end" className="sliderLabelRight"> Very Acceptable</IonNote>
+            <IonNote slot="start" className="sliderLabelLeft"> The thermal sensation is very unacceptable</IonNote>
+            <IonNote slot="end" className="sliderLabelRight"> The thermal sensation is very acceptable</IonNote>
           </IonItem>
           
           <IonItem>
@@ -275,19 +301,24 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           
 
           <IonItem>
-              <IonLabel position="stacked"> Input Building Number</IonLabel>
+              <IonLabel position="stacked"> What building are you in?</IonLabel>
                 <IonInput inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> Input Room Number</IonLabel>
+              <IonLabel position="stacked"> What room are you in? </IonLabel>
                 <IonInput inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
           </IonItem>
         
+          <IonItem>
+              <IonLabel position="stacked"> What city are you in? </IonLabel>
+              <IonInput inputmode="numeric" onIonChange= {e => getWeatherData(e)}> </IonInput>
+          </IonItem>
           </IonCardContent>
           <IonButton className="SubmitButton" onClick={postData}>
               Submit
           </IonButton>
+
       </IonCard>
     </IonContent>
   </IonPage>

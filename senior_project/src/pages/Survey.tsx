@@ -3,7 +3,6 @@ import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";
 import { RouteComponentProps } from 'react-router';
-import { arrowBack } from 'ionicons/icons';
 import { pushData } from '../firebaseConfig';
 var request = require('request');
 
@@ -102,7 +101,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         "Standing relaxed",
         "Walking 2mph",
         "Walking 3mph",
-        "Waling 4mph",
+        "Walking 4mph",
     ];
     let recentActionOptions = [];
     for (let i = 0 ; i < recentAction.length; i++) {

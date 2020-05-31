@@ -9,9 +9,7 @@ import { RouteComponentProps } from 'react-router';
 import { pushData } from '../firebaseConfig';
 var request = require('request');
 
-
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
-
 
     const state: any = location.state;
     
@@ -133,7 +131,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     function selectAcceptability(e:any) {
         dataPoint.acceptability = e.detail.value/10.0;
-        if (dataPoint.acceptability == 0.0) {
+        if (dataPoint.acceptability === 0.0) {
             dataPoint.acceptability = -0.1;
         }
     }
@@ -146,7 +144,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         dataPoint.clothingLevel = e.detail.value;
     }
 
-    function  postData() {
+    function postData() {
         if (state.uid) {
             pushData(dataPoint, state.uid);
             history.push('/landingPage')

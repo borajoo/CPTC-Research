@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, IonSelectOption, IonRange } from '@ionic/react';
+import { IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";

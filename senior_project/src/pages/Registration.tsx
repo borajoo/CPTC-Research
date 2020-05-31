@@ -1,12 +1,10 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonModal, IonCheckbox } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, 
+IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader, 
+IonCardContent, IonCardTitle, IonLabel, IonCheckbox } from '@ionic/react';
 import React, { useState } from 'react';
-import { arrowBack } from 'ionicons/icons';
 import { registerUser } from '../firebaseConfig';
 import { toast } from '../toast';
 import "../style/Login.css";
-import { Document, Page, pdfjs } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
 
 const Home: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -87,7 +85,7 @@ const Home: React.FC = () => {
               <IonCheckbox onIonChange={checkBox}></IonCheckbox>
               <IonLabel>
                 <a href="https://cptc-website.s3.us-east-2.amazonaws.com/consent_form_pdf.pdf"> 
-                Accept Terms and conditions</a>
+                Accept Terms and Conditions</a>
               </IonLabel>
             </IonItem>
             <IonButton className="LoginButton" onClick={() => register()} 

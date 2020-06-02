@@ -1,4 +1,4 @@
-# Thermal Comfort Data App
+# CPTC Research App
 
   - Ionic
   - React

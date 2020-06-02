@@ -11,9 +11,12 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
   let appName = "CPTC";
   
   async function logout(){
-    await logoutUser()
-    toast('You have logged out!')
-    history.push('/home');
+    await logoutUser();
+    toast('You have logged out!');
+    history.push({
+      pathname: 'home',
+      state: {email: '', password: ''},
+    });
   }
 
   function launchSurvey() {

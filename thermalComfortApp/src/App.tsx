@@ -7,6 +7,7 @@ import Registration from './pages/Registration';
 import LandingPage from './pages/LandingPage';
 import Survey from './pages/Survey';
 import Table from './pages/Table';
+import WebInfo from './pages/WebInfo';
 import Notifications from './pages/Notifications';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,8 +32,9 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route path="/info" component={WebInfo} exact={true} />
+        <Route path="/" component={Home} exact={true} />
+        <Route exact path="/" render={() => <Redirect to="/" />} />
         <Route path="/registration" component={Registration} exact={true} />
         <Route path="/landingPage" component={LandingPage} exact={true} />
         <Route path="/survey" component={Survey} exact={true} />

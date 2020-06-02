@@ -31,7 +31,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
   <IonPage>
     <IonHeader>
       <IonToolbar>
-        <IonTitle>Login</IonTitle>
+        <IonTitle>Cal Poly Thermal Comfort</IonTitle>
       </IonToolbar>
     </IonHeader>
     <IonContent className="ion-padding">
@@ -42,7 +42,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
             Login
           </IonCardTitle>
         </IonCardHeader>
-        
+
         <IonCardContent>
           
           <IonItem>
@@ -63,8 +63,12 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
               onIonChange={(e: any) => setPassword(e.target.value)}
             />
           </IonItem>
-          <IonButton className="LoginButton" onClick={login}>Login</IonButton>
-          <IonButton className="LoginButton" routerLink="/registration/">Register</IonButton>
+            <IonButton className="LoginButton" onClick={login}>
+              Login
+            </IonButton>
+            <IonButton className="LoginButton" routerLink="/registration/">
+              Register
+            </IonButton>
           </IonCardContent>
       </IonCard>
     </IonContent>

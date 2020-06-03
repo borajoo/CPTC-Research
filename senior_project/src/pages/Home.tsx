@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonLabel } from '@ionic/react';
 import React, { useState } from 'react';
-import { loginUser, registerUser } from '../firebaseConfig';
+import { loginUser } from '../firebaseConfig';
 import "../style/Login.css";
 import { RouteComponentProps } from 'react-router';
 import { toast } from '../toast'
@@ -8,14 +8,11 @@ import { toast } from '../toast'
 const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cpassword, setCPassword] = useState('');
 
   async function login() {
     const res = await loginUser(email, password)
 
     if (res && res.user){
-      console.log('Succesful login');
-      console.log(res.user.uid);
       history.push({
         pathname: 'landingPage',
         state: { uid: res.user.uid},
@@ -24,19 +21,6 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
       toast('Error logging in with your credentials');
     }
   }
-  
-  async function register(){
-    //validation
-    if(password !== cpassword){
-      toast('Passwords do not match')
-    }
-    
-    const res = await registerUser(email, password)
-    if (res){
-      toast('Sucessful register')
-    }
-  }
-
   
   return (
   <IonPage>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.ionic.starter">
+    android:versionCode="1"
+    android:versionName="beta.1"
+    package="io.ionic.cptc">
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,7 @@
 
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
-            android:name="io.ionic.starter.MainActivity"
+            android:name="io.ionic.cptc.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask">

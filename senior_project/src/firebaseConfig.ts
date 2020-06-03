@@ -34,9 +34,7 @@ export function logoutUser() {
 export async function loginUser(email: string, password: string) {
     // authenticate with firebase
     try {
-        const res = await firebase.auth().signInWithEmailAndPassword(email, password)
-
-        console.log(res)
+        const res = await firebase.auth().signInWithEmailAndPassword(email, password);
         return res;
     } catch(error) {
         toast(error.message, 4000)
@@ -48,7 +46,6 @@ export async function registerUser(email: string, password: string) {
     // authenticate with firebase
     try {
         const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
-        console.log(res);
         return true;
     } catch(error) {
         toast(error.message, 4000);

@@ -2,6 +2,7 @@
   "name": "senior_project",
   "version": "0.0.1",
   "private": true,
+  "homepage": "http://cptc-website.s3-website.us-east-2.amazonaws.com",
   "dependencies": {
     "@capacitor/android": "^1.5.0",
     "@capacitor/core": "^1.5.0",
@@ -58,7 +59,13 @@
   },
   "description": "An Ionic project",
   "devDependencies": {
+<<<<<<< HEAD
     "@capacitor/cli": "^1.5.0",
+=======
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@capacitor/cli": "1.5.0",
+>>>>>>> 052bd2ca972bce3da245cb36527024d35c3aee57
     "@types/firebase": "^3.2.1",
     "react-scripts": "^3.4.0"
   }

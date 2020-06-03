@@ -12,7 +12,6 @@ const Notifications: React.FC<RouteComponentProps> = ({history, location}) => {
         if (location.state) {
         history.push('/home');
         }
-        
     }
 
     function updateNotifcation(e:any, i:number) {

@@ -5,8 +5,9 @@ import React, { useState } from 'react';
 import { registerUser } from '../firebaseConfig';
 import { toast } from '../toast';
 import "../style/Login.css";
+import { RouteComponentProps } from 'react-router';
 
-const Home: React.FC = () => {
+const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
@@ -24,16 +25,21 @@ const Home: React.FC = () => {
   };
   async function register(){
     //validation
-    if(password !== cpassword && password !== ''){
-      toast('Passwords do not match')
+    if(password !== cpassword && password !== '') {
+      toast('Passwords do not match');
       return false;
-    }
-    
-    const res = await registerUser(email, password)
-    if (res){
-      toast('Sucessful register')
+    } else {
+      const res = await registerUser(email, password)
+      if (res) {
+        toast('Sucessful register');
+        history.push({
+          pathname: '/home',
+        });
+      }
     }
   }
+    
+    
   
   return (
     <IonPage>
@@ -60,6 +66,7 @@ const Home: React.FC = () => {
               <IonLabel position="stacked">Email</IonLabel>
               <IonInput
                 placeholder="Email"
+                value={email}
                 onIonChange={(e: any) => setEmail(e.target.value)}
               />
             </IonItem>
@@ -69,6 +76,7 @@ const Home: React.FC = () => {
               <IonInput
                 type="password"
                 placeholder="Password"
+                value={password}
                 onIonChange={(e: any) => setPassword(e.target.value)}
               />
             </IonItem>
@@ -78,6 +86,7 @@ const Home: React.FC = () => {
               <IonInput
               type="password"
               placeholder="Confirm Password?"
+              value={cpassword}
               onIonChange={(e: any) => setCPassword(e.target.value)}
               />
             </IonItem>

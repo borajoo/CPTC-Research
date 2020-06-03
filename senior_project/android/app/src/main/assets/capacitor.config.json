@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "senior_project",
+  "appId": "com.example.app",
+  "appName": "CPTC",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",

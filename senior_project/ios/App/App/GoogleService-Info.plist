@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>683582280356-6j4v2qv2fh71a3dhtojj2e5j18ks4v5t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.683582280356-6j4v2qv2fh71a3dhtojj2e5j18ks4v5t</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAgGrDMyx0dU4CbwswD6pzWd9yclRs43s8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>683582280356</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.calpoly.cptc</string>
+	<key>PROJECT_ID</key>
+	<string>thermalcomfortdataapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>thermalcomfortdataapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:683582280356:ios:6527be7b001c4f0ad18c31</string>
+	<key>DATABASE_URL</key>
+	<string>https://thermalcomfortdataapp.firebaseio.com</string>
+</dict>
+</plist>

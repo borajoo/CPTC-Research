@@ -3,7 +3,7 @@
   <access origin="*" />
   
   <feature name="SitewaertsDocumentViewer">
-    <param name="android-package" value="de.sitewaerts.cordova.documentviewer.DocumentViewerPlugin"/>
+    <param name="ios-package" value="SitewaertsDocumentViewer"/>
   </feature>
 
   

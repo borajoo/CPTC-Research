@@ -2,3 +2,8 @@ ion-button{
    --border-color: #154734;
    --color: #154734;
 }
+
+ion-buttons{
+   --border-color: #154734;
+   --color: #154734;
+}

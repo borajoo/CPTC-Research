@@ -1,73 +1,97 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
-   IonItem, IonButton, IonInput, IonCard, IonCardHeader, IonRow,
- IonCardTitle, IonLabel, IonGrid, IonCol, IonImg} from '@ionic/react';
-   import React, { useState } from 'react';
-   import { loginUser } from '../firebaseConfig';
-   import "../style/info.css";
-   import { RouteComponentProps } from 'react-router';
-   import { toast } from '../toast';
-   
-   const WebInfo: React.FC<RouteComponentProps> = ({history}) => {     
+IonButton, IonRow,IonGrid, IonCol, IonImg, IonButtons} from '@ionic/react';
+import React from 'react';
+import "../style/info.css";
+import { RouteComponentProps } from 'react-router';
 
 
-   
-     return (
-     <IonPage>
-       <IonHeader>
-         <IonToolbar>
-           <IonTitle>Cal Poly Thermal Comfort</IonTitle>
-         </IonToolbar>
-       </IonHeader>
-       <IonContent className="ion-padding">
+const WebInfo: React.FC<RouteComponentProps> = ({history}) => {
 
-         <IonGrid>
-            <IonRow>
-               <IonCol size="12">
-                  <IonImg src={process.env.PUBLIC_URL + '/assets/featureGraphic.png'}></IonImg>
-               </IonCol>
-            </IonRow>
-            <IonRow>
-               <IonCol size="2">
-               </IonCol>
-               <IonCol size="8">
-                  <h3 className="ion-text-center">Download the CPTC App on the Android and iOS App Stores.</h3>
-               </IonCol>
-               <IonCol size="2">
-               </IonCol>
-            </IonRow>
-            <IonRow>
-               <IonCol></IonCol>
-               <IonCol size="4">
-                  <IonImg  src={process.env.PUBLIC_URL + '/assets/appLogo.png'}>
-                  </IonImg>
-               </IonCol>
-               <IonCol></IonCol>
-               <IonCol size="4">
-                  <IonImg style={{marginTop: "10%"}} src={process.env.PUBLIC_URL + '/assets/googleLogo.png'}>
-                     <a href="https://play.google.com/store?hl=en_US"></a>   
-                  </IonImg>
-                  <IonImg src={process.env.PUBLIC_URL + '/assets/appleLogo.svg'}>
-                     <a href="https://www.apple.com/ios/app-store/"></a>
-                  </IonImg>
-               </IonCol> 
-               <IonCol></IonCol>
-            </IonRow>
+   return (
+   <IonPage>
+      <IonHeader>
+      <IonToolbar>
+         <IonTitle>Cal Poly Thermal Comfort</IonTitle>
+         <IonButtons slot="end">
+            <IonButton size="large" fill="outline" style={{width: "90px"}}
+            onClick={() => history.push("/")}>
+               Sign In
+            </IonButton>
+         </IonButtons>
+      </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+      <IonGrid>
+         <IonRow>
+            <IonCol size="12">
+               <IonImg 
+                src={process.env.PUBLIC_URL + '/assets/featureGraphic.png'}>
+               </IonImg>
+            </IonCol>
+         </IonRow>
 
-            <IonRow>
-               <IonCol></IonCol>
-               <IonCol size="6">
-                  <IonButton id="termsButton" href="https://cptc-website.s3.us-east-2.amazonaws.com/consent_form_pdf.pdf" 
-                  shape="round"
-                  color=""
-                  fill="outline">See Terms & Conditions</IonButton>
-               </IonCol>
-               <IonCol></IonCol>
-            </IonRow>
-         </IonGrid>
-       </IonContent>
-     </IonPage>
+         <IonRow>
+            <IonCol></IonCol>
+            <IonCol size="7">
+               <div style={{textAlign: "center"}}>
+                  <h4>
+                  Are you tired of dripping flushed face Wednesday afternoons?
+                  <br></br>
+                  Help us discover a Cal Poly campus where back sweat and 
+                  goosebumps are a thing of the past!
+                  <br></br>
+                  Click below to download our <strong>cool</strong> app.
+                  <br></br>
+                  </h4>
+               </div>
+               
+            </IonCol>
+            <IonCol></IonCol>
+         </IonRow>
+         <IonRow>
+            <IonCol></IonCol>
+            <IonCol size="4">
+                  <a href="https://play.google.com/store/apps/details?id=io.ionic.cptc">
+                     <IonImg  
+                      src={process.env.PUBLIC_URL + '/assets/playStoreLogo.png'}
+                      style={{marginTop: "15%", height: "60%"}}>
+                     </IonImg>
+                     <IonImg 
+                      style={{marginTop: "7%", width: "115%", marginLeft: "-7%"}} 
+                      src={process.env.PUBLIC_URL + '/assets/googleLogo.png'}>   
+                     </IonImg>
+                  </a>   
+            </IonCol>
+            <IonCol></IonCol>
+            <IonCol size="4">
+                  <a href="https://apps.apple.com/us/app/cal-poly-thermal-comfort/id1514435694?ls=1">
+                     <IonImg  
+                      src={process.env.PUBLIC_URL + '/assets/appStoreLogo.png'}
+                      style={{marginTop: "15%", height: "60%"}}>
+                     </IonImg>
+                     <IonImg 
+                      style={{marginTop: "14%"}}
+                      src={process.env.PUBLIC_URL + '/assets/appleLogo.svg'}> 
+                     </IonImg>
+                  </a>
+            </IonCol> 
+            <IonCol></IonCol>
+         </IonRow>
+
+         <IonRow>
+            <IonCol></IonCol>
+            <IonCol size="6">
+               <IonButton id="termsButton" href="https://cptc-website.s3.us-east-2.amazonaws.com/consent_form_pdf.pdf" 
+               shape="round"
+               fill="outline">See Terms & Conditions</IonButton>
+            </IonCol>
+            <IonCol></IonCol>
+         </IonRow>
+      </IonGrid>
+      </IonContent>
+   </IonPage>
    );
-     
-   };
    
-   export default WebInfo;
+};
+
+export default WebInfo;

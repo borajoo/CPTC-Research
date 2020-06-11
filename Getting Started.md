@@ -9,7 +9,7 @@
 
 # Ionic 
 
-- Ionic is the technology we use to convert our Web based code into code that can creates an app. It is pretty cool concept, we just build a website and then run a few commands on our command line and then our website can also be posted to the app store!.
+- Ionic is the technology we use to convert our Web based code into code that can creates an app. It is pretty cool concept, we just build a website and then run a few commands on our command line and then our website can also be posted to the app store!
 
 ### Ionic Documentation
 

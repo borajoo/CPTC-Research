@@ -13,18 +13,18 @@ const config = {
 
 firebase.initializeApp(config);
 
-export async function pushData(data: any, user: string) { 
-    firebase.firestore().collection('tempPoint').add({ 
-        thermalSensation: data.thermalSensation, 
-        thermalComfort: data.thermalComfort,
-         airVelocity: data.airVelocity,
-          humiditySensation: data.humiditySensation,
-           thermalPreference: data.thermalPreference,
-            acceptability: data.acceptability,
-             buildingNumber: data.buildingNumber,
-             clothingLevel: data.clothingLevel,
-             recentAction: data.recentAction,
-              roomNumber: data.roomNumber, userId: user });
+export async function pushData(data: any, user: string) {
+    firebase.firestore().collection('tempPoint').add({
+        userId: user,
+        buildingNumber: data.buildingNumber,
+        roomNumber: data.roomNumber,
+        thermalSensation: data.thermalSensation,
+        thermalPreference: data.thermalPreference,
+        airVelocity: data.airVelocity,
+        humiditySensation: data.humiditySensation,
+        clothingLevel: data.clothingLevel,
+        recentAction: data.recentAction,
+    });
 }
 
 export function logoutUser() {
@@ -39,7 +39,7 @@ export async function loginUser(email: string, password: string) {
     } catch(error) {
         toast(error.message, 4000)
         return false;
-    } 
+    }
 }
 
 export async function registerUser(email: string, password: string) {
@@ -50,5 +50,5 @@ export async function registerUser(email: string, password: string) {
     } catch(error) {
         toast(error.message, 4000);
         return false;
-    } 
+    }
 }

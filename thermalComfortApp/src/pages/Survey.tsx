@@ -1,6 +1,6 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton, 
-IonItem, IonButtons, IonNote, IonButton, IonInput, IonCard, 
-IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect, 
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton,
+IonItem, IonButtons, IonNote, IonButton, IonInput, IonCard,
+IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect,
 IonSelectOption, IonRange } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
@@ -12,14 +12,9 @@ var request = require('request');
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     const state: any = location.state;
-    
-    let dataPoint:any = {
-        thermalSensation: '',
-        uid: state.uid,
-        temp: 0,
-        humidiy: 0,
-        windspeed: 0,
-    };
+
+    let dataPoint: any = {};
+
     const sensationOptions = [
         {
             id: 1,
@@ -51,16 +46,10 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         },
     ];
 
-    let thermalComfort = ["Much too cold", "Too cold", "OK (cool)", "OK (Just right)", "OK(warm)", "Too warm", "Much too warm"];
-    let thermalComfortOptions = [];
-    for (let i = 0; i < thermalComfort.length; i++) {
-        thermalComfortOptions.push({id: i+1, first: thermalComfort[i]});
-    }
-
-    let airVelocity = ["Still", "Just right", "Breezy"];
-    let airVelocityOptions = [];
-    for (let i = 0; i < airVelocity.length; i++) {
-        airVelocityOptions.push({id: i +1, first: airVelocity[i]});
+    let breezy = ["Yes", "No"];
+    let breezyOptions = [];
+    for (let i = 0; i < breezy.length; i++) {
+        breezyOptions.push({id: i +1, first: breezy[i]});
     }
 
     let humiditySensation = ["Too dry", "Slightly dry", "Just right", "Slightly humid", "Too humid"];
@@ -75,80 +64,36 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         thermalPreferenceOptions.push({id: i+1, first: thermalPreference[i]});
     }
 
-    let acceptability = ["Acceptable", "Not Acceptable"];
-    let acceptabilityOptions = [];
-    for (let i = 0; i < acceptability.length; i++) {
-        acceptabilityOptions.push({id:i+1, first: acceptability[i]});
-    }
-
-    let clothingLevel = [
-        "Walking short, short sleeves shirt", 
-        "Typical summer indoor clothing", 
-        "Knee-length skirt, short-sleeve shirt, sandals, underwear",
-        "Trousers, short-sleeve shirt, socks, shoes, underwear",
-        "Trousers, long-sleeve shirt",
-        "Knee-length skirt, long-sleeve shirt, full slip",
-        "Sweatpants, long-sleeve sweatshirt",
-        "Jacket, trousers, long-sleeve shirt",
+    let clothing = [
+        "Short-sleeve shirt",
+        "Long-sleeve shirt",
+        "Shorts",
+        "Long pants",
+        "Short skirt",
+        "Long skirt",
+        "Sweatpants",
+        "Long-sleeve sweatshirt",
+        "Jacket",
+        "Typical summer indoor clothing",
         "Typical winter indoor clothing"
-    ];    
-    let clothingLevelOptions = [];
-    for (let i = 0 ; i < clothingLevel.length; i++) {
-        clothingLevelOptions.push({id: i+1, first: clothingLevel[i]});
+    ];
+
+    let clothingOptions = [];
+    for (let i = 0 ; i < clothing.length; i++) {
+        clothingOptions.push({id: i+1, first: clothing[i]});
     }
 
     let recentAction = [
-        "Seated, quiet",
-        "Standing relaxed",
-        "Walking 2mph",
-        "Walking 3mph",
-        "Walking 4mph",
+        "Sitting",
+        "Standing",
+        "Walking",
+        "Jogging",
+        "Running",
     ];
+
     let recentActionOptions = [];
     for (let i = 0 ; i < recentAction.length; i++) {
         recentActionOptions.push({id: i+1, first: recentAction[i]});
-    }
-
-    function selectThermalSensation(e:any) {
-        dataPoint.thermalSensation = e.detail.value;
-    }
-    
-    function selectThermalComfort(e:any) {
-        dataPoint.thermalComfort = e.detail.value;
-    }
-
-    function selectAirVelocity(e:any) {
-        dataPoint.airVelocity = e.detail.value;
-    }
-
-    function selectHumiditySensation(e:any) {
-        dataPoint.humiditySensation = e.detail.value;
-    }
-
-    function selectThermalPreference(e:any) {
-        dataPoint.thermalPreference = e.detail.value;
-    }
-
-    function selectAcceptability(e:any) {
-        dataPoint.acceptability = e.detail.value/10.0;
-        if (dataPoint.acceptability === 0.0) {
-            dataPoint.acceptability = -0.1;
-        }
-    }
-
-    function selectRecentAction(e:any) {
-        dataPoint.recentAction = e.detail.value;
-    }
-
-    function selectClothingLevel(e:any) {
-        dataPoint.clothingLevel = e.detail.value;
-    }
-
-    function postData() {
-        if (state.uid) {
-            pushData(dataPoint, state.uid);
-            history.push('/landingPage')
-        }
     }
 
     function selectBuildingNumber(e:any) {
@@ -157,6 +102,37 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     function selectRoomNumber(e:any) {
         dataPoint.roomNumber = e.detail.value;
+    }
+
+    function selectThermalSensation(e:any) {
+        dataPoint.thermalSensation = e.detail.value;
+    }
+
+    function selectThermalPreference(e:any) {
+        dataPoint.thermalPreference = e.detail.value;
+    }
+
+    function selectBreezy(e:any) {
+        dataPoint.breezy = e.detail.value;
+    }
+
+    function selectHumiditySensation(e:any) {
+        dataPoint.humiditySensation = e.detail.value;
+    }
+
+    function selectClothing(e:any) {
+        dataPoint.clothing = e.detail.value;
+    }
+
+    function selectRecentAction(e:any) {
+        dataPoint.recentAction = e.detail.value;
+    }
+
+    function postData() {
+        if (state.uid) {
+            pushData(dataPoint, state.uid);
+            history.push('/landingPage')
+        }
     }
 
     function getWeatherData(e:any){
@@ -171,7 +147,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
                 let weatherData = JSON.parse(body);
                 if (weatherData.main) {
                     dataPoint.temp = weatherData.main.temp;
-                    dataPoint.windspeed = weatherData.wind.speed; 
+                    dataPoint.windspeed = weatherData.wind.speed;
                     dataPoint.humidity = weatherData.main.humidity;
                 }
               }
@@ -197,9 +173,18 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
-           
           <IonItem>
-            <IonLabel position="stacked" className="questionLabel">What is your Thermal Sensation? </IonLabel>
+              <IonLabel position="stacked"> What building are you in?</IonLabel>
+                <IonInput placeholder="Input number (i.e. 01)" inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
+          </IonItem>
+
+          <IonItem>
+              <IonLabel position="stacked"> What room are you in? </IonLabel>
+                <IonInput placeholder="Input number (i.e. 0123)" inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
+          </IonItem>
+
+          <IonItem>
+            <IonLabel position="stacked" className="questionLabel">How does the temperature feel? </IonLabel>
             <IonSelect className="questionSelect" placeholder="Select One" onIonChange={e => selectThermalSensation(e)}>
             {sensationOptions.map((object, i) => {
                 return (
@@ -209,51 +194,11 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
                 );
             })}
             </IonSelect>
-
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> What is your Thermal Comfort Level? </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectThermalComfort(e)}>
-            {thermalComfortOptions.map((object, i) => {
-                return (
-                <IonSelectOption key={i} value={object.first}>
-                    {object.first}
-                </IonSelectOption>
-                );
-            })}
-            </IonSelect>
-          </IonItem>
-
-          <IonItem>
-              <IonLabel position="stacked" className="surveyLabel"> What is the Air Velocity? </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectAirVelocity(e)}>
-            {airVelocityOptions.map((object, i) => {
-                return (
-                <IonSelectOption key={i} value={object.first}>
-                    {object.first}
-                </IonSelectOption>
-                );
-            })}
-            </IonSelect>
-          </IonItem>
-
-          <IonItem>
-              <IonLabel position="stacked" className="surveyLabel"> What is the Humidity Sensation? </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectHumiditySensation(e)}>
-            {humiditySensationOptions.map((object, i) => {
-                return (
-                <IonSelectOption key={i} value={object.first}>
-                    {object.first}
-                </IonSelectOption>
-                );
-            })}
-            </IonSelect>
-          </IonItem>
-
-          <IonItem>
-              <IonLabel position="stacked"> What is your Thermal Preference? </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectThermalPreference(e)}>
+              <IonLabel position="stacked"> How would you prefer the temperature to feel? </IonLabel>
+            <IonSelect placeholder="Select one" onIonChange={e => selectThermalPreference(e)}>
             {thermalPreferenceOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
@@ -265,9 +210,35 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked"> What is your Clothing Level? </IonLabel>
-            <IonSelect placeholder="Select One" onIonChange={e => selectClothingLevel(e)}>
-            {clothingLevelOptions.map((object, i) => {
+              <IonLabel position="stacked" className="surveyLabel"> Does it feel breezy? </IonLabel>
+            <IonSelect placeholder="Select one" onIonChange={e => selectBreezy(e)}>
+            {breezyOptions.map((object, i) => {
+                return (
+                <IonSelectOption key={i} value={object.first}>
+                    {object.first}
+                </IonSelectOption>
+                );
+            })}
+            </IonSelect>
+          </IonItem>
+
+          <IonItem>
+              <IonLabel position="stacked" className="surveyLabel"> How humid do you feel? </IonLabel>
+            <IonSelect placeholder="Select one" onIonChange={e => selectHumiditySensation(e)}>
+            {humiditySensationOptions.map((object, i) => {
+                return (
+                <IonSelectOption key={i} value={object.first}>
+                    {object.first}
+                </IonSelectOption>
+                );
+            })}
+            </IonSelect>
+          </IonItem>
+
+          <IonItem>
+              <IonLabel position="stacked"> What clothing are you wearing? </IonLabel>
+            <IonSelect multiple={true} placeholder="Select all that apply" onIonChange={e => selectClothing(e)}>
+            {clothingOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
                     {object.first}
@@ -279,7 +250,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
           <IonItem>
               <IonLabel position="stacked"> What activities have you performed in the last 10 minutes?</IonLabel>
-            <IonSelect multiple={true} placeholder="Select One" onIonChange={e => selectRecentAction(e)}>
+            <IonSelect multiple={true} placeholder="Select all that apply" onIonChange={e => selectRecentAction(e)}>
             {recentActionOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
@@ -290,30 +261,6 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
             </IonSelect>
           </IonItem>
 
-          <IonItem lines="none">
-            <IonNote slot="start" className="sliderLabelLeft"> The thermal sensation is very unacceptable</IonNote>
-            <IonNote slot="end" className="sliderLabelRight"> The thermal sensation is very acceptable</IonNote>
-          </IonItem>
-          
-          <IonItem>
-            <IonRange min={-30} max={30} color="secondary" onIonChange= { e => selectAcceptability(e)}></IonRange>
-          </IonItem>
-          
-
-          <IonItem>
-              <IonLabel position="stacked"> What building are you in?</IonLabel>
-                <IonInput inputmode="numeric" onIonChange= {e => selectBuildingNumber(e)}></IonInput>
-          </IonItem>
-
-          <IonItem>
-              <IonLabel position="stacked"> What room are you in? </IonLabel>
-                <IonInput inputmode="numeric" onIonChange= {e => selectRoomNumber(e)}></IonInput>
-          </IonItem>
-        
-          <IonItem>
-              <IonLabel position="stacked"> What city are you in? </IonLabel>
-              <IonInput inputmode="numeric" onIonChange= {e => getWeatherData(e)}> </IonInput>
-          </IonItem>
           </IonCardContent>
           <IonButton className="SubmitButton" onClick={postData}>
               Submit
@@ -323,7 +270,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     </IonContent>
   </IonPage>
 );
-  
+
 };
 
 export default Survey;

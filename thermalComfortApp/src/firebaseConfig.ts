@@ -20,9 +20,9 @@ export async function pushData(data: any, user: string) {
         roomNumber: data.roomNumber,
         thermalSensation: data.thermalSensation,
         thermalPreference: data.thermalPreference,
-        airVelocity: data.airVelocity,
+        breezy: data.breezy,
         humiditySensation: data.humiditySensation,
-        clothingLevel: data.clothingLevel,
+        clothing: data.clothing,
         recentAction: data.recentAction,
     });
 }

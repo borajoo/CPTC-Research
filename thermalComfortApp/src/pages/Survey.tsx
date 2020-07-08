@@ -13,13 +13,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     const state: any = location.state;
 
-    let dataPoint:any = {
-        thermalSensation: '',
-        uid: state.uid,
-        temp: 0,
-        humidiy: 0,
-        windspeed: 0,
-    };
+    let dataPoint: any = {};
+
     const sensationOptions = [
         {
             id: 1,
@@ -51,10 +46,10 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         },
     ];
 
-    let airVelocity = ["Yes", "No"];
-    let airVelocityOptions = [];
-    for (let i = 0; i < airVelocity.length; i++) {
-        airVelocityOptions.push({id: i +1, first: airVelocity[i]});
+    let breezy = ["Yes", "No"];
+    let breezyOptions = [];
+    for (let i = 0; i < breezy.length; i++) {
+        breezyOptions.push({id: i +1, first: breezy[i]});
     }
 
     let humiditySensation = ["Too dry", "Slightly dry", "Just right", "Slightly humid", "Too humid"];
@@ -69,13 +64,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         thermalPreferenceOptions.push({id: i+1, first: thermalPreference[i]});
     }
 
-    let acceptability = ["Acceptable", "Not Acceptable"];
-    let acceptabilityOptions = [];
-    for (let i = 0; i < acceptability.length; i++) {
-        acceptabilityOptions.push({id:i+1, first: acceptability[i]});
-    }
-
-    let clothingLevel = [
+    let clothing = [
         "Short-sleeve shirt",
         "Long-sleeve shirt",
         "Shorts",
@@ -89,9 +78,9 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         "Typical winter indoor clothing"
     ];
 
-    let clothingLevelOptions = [];
-    for (let i = 0 ; i < clothingLevel.length; i++) {
-        clothingLevelOptions.push({id: i+1, first: clothingLevel[i]});
+    let clothingOptions = [];
+    for (let i = 0 ; i < clothing.length; i++) {
+        clothingOptions.push({id: i+1, first: clothing[i]});
     }
 
     let recentAction = [
@@ -123,16 +112,16 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         dataPoint.thermalPreference = e.detail.value;
     }
 
-    function selectAirVelocity(e:any) {
-        dataPoint.airVelocity = e.detail.value;
+    function selectBreezy(e:any) {
+        dataPoint.breezy = e.detail.value;
     }
 
     function selectHumiditySensation(e:any) {
         dataPoint.humiditySensation = e.detail.value;
     }
 
-    function selectClothingLevel(e:any) {
-        dataPoint.clothingLevel = e.detail.value;
+    function selectClothing(e:any) {
+        dataPoint.clothing = e.detail.value;
     }
 
     function selectRecentAction(e:any) {
@@ -222,8 +211,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
           <IonItem>
               <IonLabel position="stacked" className="surveyLabel"> Does it feel breezy? </IonLabel>
-            <IonSelect placeholder="Select one" onIonChange={e => selectAirVelocity(e)}>
-            {airVelocityOptions.map((object, i) => {
+            <IonSelect placeholder="Select one" onIonChange={e => selectBreezy(e)}>
+            {breezyOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
                     {object.first}
@@ -248,8 +237,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
           <IonItem>
               <IonLabel position="stacked"> What clothing are you wearing? </IonLabel>
-            <IonSelect multiple={true} placeholder="Select all that apply" onIonChange={e => selectClothingLevel(e)}>
-            {clothingLevelOptions.map((object, i) => {
+            <IonSelect multiple={true} placeholder="Select all that apply" onIonChange={e => selectClothing(e)}>
+            {clothingOptions.map((object, i) => {
                 return (
                 <IonSelectOption key={i} value={object.first}>
                     {object.first}

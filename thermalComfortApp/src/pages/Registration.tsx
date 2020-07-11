@@ -1,5 +1,5 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, 
-IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader, 
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons,
+IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader,
 IonCardContent, IonCardTitle, IonLabel, IonCheckbox } from '@ionic/react';
 import React, { useState } from 'react';
 import { registerUser } from '../firebaseConfig';
@@ -12,7 +12,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
   const [terms, setTerms] = useState(false);
-  
+
   let checkBox = (e: any) => {
     setTerms(e.detail.checked);
   };
@@ -20,7 +20,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
   let validPassword = () => {
     if (password && password === cpassword)
       return true;
-    else 
+    else
       return false;
   };
   async function register(){
@@ -33,14 +33,14 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
       if (res) {
         toast('Sucessful register');
         history.push({
-          pathname: '/home',
+          pathname: '/',
         });
       }
     }
   }
-    
-    
-  
+
+
+
   return (
     <IonPage>
       <IonHeader>
@@ -60,7 +60,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
               Register
             </IonCardTitle>
           </IonCardHeader>
-          
+
           <IonCardContent>
             <IonItem>
               <IonLabel position="stacked">Email</IonLabel>
@@ -70,7 +70,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
                 onIonChange={(e: any) => setEmail(e.target.value)}
               />
             </IonItem>
-              
+
             <IonItem>
               <IonLabel position="stacked">Password</IonLabel>
               <IonInput
@@ -80,7 +80,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
                 onIonChange={(e: any) => setPassword(e.target.value)}
               />
             </IonItem>
-            
+
             <IonItem>
               <IonLabel position="stacked">Confirm Password</IonLabel>
               <IonInput
@@ -93,12 +93,12 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
             <IonItem>
               <IonCheckbox onIonChange={checkBox}></IonCheckbox>
               <IonLabel>
-                <a href="https://cptc-website.s3.us-east-2.amazonaws.com/consent_form_pdf.pdf"> 
+                <a href="https://cptc-website.s3.us-east-2.amazonaws.com/consent_form_pdf.pdf">
                 Accept Terms and Conditions</a>
               </IonLabel>
             </IonItem>
-            <IonButton className="LoginButton" onClick={() => register()} 
-             disabled={!terms && !(validPassword())} 
+            <IonButton className="LoginButton" onClick={() => register()}
+             disabled={!terms && !(validPassword())}
              routerLink="/registration">
               Register</IonButton>
           </IonCardContent>

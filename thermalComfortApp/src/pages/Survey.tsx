@@ -46,7 +46,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
         },
     ];
 
-    let breezy = ["Yes", "No"];
+    let breezy = ["Too breezy", "Slightly breezy", "Not breezy"];
     let breezyOptions = [];
     for (let i = 0; i < breezy.length; i++) {
         breezyOptions.push({id: i +1, first: breezy[i]});
@@ -185,7 +185,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
           <IonItem>
             <IonLabel position="stacked" className="questionLabel">How does the temperature feel? </IonLabel>
-            <IonSelect className="questionSelect" placeholder="Select One" onIonChange={e => selectThermalSensation(e)}>
+            <IonSelect className="questionSelect" placeholder="Select one" onIonChange={e => selectThermalSensation(e)}>
             {sensationOptions.map((object, i) => {
                 return (
                 <IonSelectOption  onSelect={selectThermalSensation} key={i} value={object.first}>
@@ -210,7 +210,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
           </IonItem>
 
           <IonItem>
-              <IonLabel position="stacked" className="surveyLabel"> Does it feel breezy? </IonLabel>
+              <IonLabel position="stacked" className="surveyLabel"> How breezy does it feel? </IonLabel>
             <IonSelect placeholder="Select one" onIonChange={e => selectBreezy(e)}>
             {breezyOptions.map((object, i) => {
                 return (

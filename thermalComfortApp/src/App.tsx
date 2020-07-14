@@ -28,6 +28,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import SurveyComplete from './pages/SurveyComplete';
 
 const App: React.FC = () => (
   <IonApp>
@@ -40,6 +41,7 @@ const App: React.FC = () => (
         <Route path="/survey" component={Survey} exact={true} />
         <Route path="/notifications" component={Notifications} exact={true} />
         <Route path="/data" component={Table} exact={true} />
+        <Route path="/surveyComplete" component={SurveyComplete} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

@@ -131,7 +131,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     function postData() {
         if (state.uid) {
             pushData(dataPoint, state.uid);
-            history.push('/landingPage')
+            history.push('/surveyComplete')
         }
     }
 

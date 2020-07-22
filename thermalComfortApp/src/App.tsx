@@ -8,7 +8,8 @@ import LandingPage from './pages/LandingPage';
 import Survey from './pages/Survey';
 import Table from './pages/Table';
 import WebInfo from './pages/WebInfo';
-import Notifications from './pages/Notifications';
+import EditNotifications from './pages/EditNotifications';
+import SurveyComplete from './pages/SurveyComplete';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,7 +29,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import SurveyComplete from './pages/SurveyComplete';
 
 const App: React.FC = () => (
   <IonApp>
@@ -39,9 +39,9 @@ const App: React.FC = () => (
         <Route path="/registration" component={Registration} exact={true} />
         <Route path="/landingPage" component={LandingPage} exact={true} />
         <Route path="/survey" component={Survey} exact={true} />
-        <Route path="/notifications" component={Notifications} exact={true} />
         <Route path="/data" component={Table} exact={true} />
         <Route path="/surveyComplete" component={SurveyComplete} exact={true} />
+        <Route path="/editNotifs" component={EditNotifications} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

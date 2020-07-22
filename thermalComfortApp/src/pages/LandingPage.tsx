@@ -9,7 +9,7 @@ import { toast } from '../toast'
 const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
 
   let appName = "CPTC";
-  
+
   async function logout(){
     await logoutUser();
     toast('You have logged out!');
@@ -22,12 +22,12 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
   function launchSurvey() {
     if (location.state) {
       history.push('/survey', location.state);
-    } 
+    }
   }
 
   function launchNotifications() {
     if (location.state) {
-      history.push('/notifications', location.state);
+      history.push('/editNotifs', location.state);
     }
   }
 

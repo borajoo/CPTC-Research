@@ -27,6 +27,25 @@ export async function pushData(data: any, user: string) {
     });
 }
 
+export async function pushNotifs(data: any, user: string) {
+    const ref = firebase.firestore().collection('users').doc(user).collection('notifications').doc('notifications');
+    await ref.set({
+        "8:00 AM": data.eightAm,
+        "9:00 AM": data.nineAm,
+        "10:00 AM": data.tenAm,
+        "11:00 AM": data.elevenAm,
+        "12:00 PM": data.twelvePm,
+        "1:00 PM": data.onePm,
+        "2:00 PM": data.twoPm,
+        "3:00 PM": data.threePm,
+        "4:00 PM": data.fourPm,
+        "5:00 PM": data.fivePm,
+        "6:00 PM": data.sixPm,
+        "7:00 PM": data.sevenPm,
+        "8:00 PM": data.eightPm,
+    });
+}
+
 export function logoutUser() {
     return firebase.auth().signOut()
 }

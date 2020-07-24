@@ -21,3 +21,14 @@
 
 - To convert your web code in ReactJS to code for iOS go to the [iOS docs here](https://ionicframework.com/docs/deployment/app-store) and for Android go to the [Android docs here](https://ionicframework.com/docs/deployment/play-store).
 
+
+### Update as of 07/24
+To get the Android studio working this is what I ran on my terminal.
+'''
+rm -rf /Users/restvo/Desktop/Winter20/sp/zoom/CPTC-Research/thermalComfortApp/android
+npx cap add android
+ionic build
+ionic cap copy
+ionic cap open android
+'''
+After running those the project in Android Studio should work. 

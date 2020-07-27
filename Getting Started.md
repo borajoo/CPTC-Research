@@ -24,11 +24,11 @@
 
 ### Update as of 07/24
 To get the Android studio working this is what I ran on my terminal.
-'''
+```
 rm -rf /Users/restvo/Desktop/Winter20/sp/zoom/CPTC-Research/thermalComfortApp/android
 npx cap add android
 ionic build
 ionic cap copy
 ionic cap open android
-'''
+```
 After running those the project in Android Studio should work. 

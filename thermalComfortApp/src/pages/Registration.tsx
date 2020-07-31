@@ -85,7 +85,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
               <IonLabel position="stacked">Confirm Password</IonLabel>
               <IonInput
               type="password"
-              placeholder="Confirm Password?"
+              placeholder="Confirm Password"
               value={cpassword}
               onIonChange={(e: any) => setCPassword(e.target.value)}
               />

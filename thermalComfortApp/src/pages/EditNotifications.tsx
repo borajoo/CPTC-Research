@@ -23,24 +23,6 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbo
     eightPm: true,
   };
 
-  const checkboxList = [
-    { val: "8:00 AM", isChecked: true },
-    { val: "9:00 AM", isChecked: true },
-    { val: "10:00 AM", isChecked: true },
-    { val: "11:00 AM", isChecked: true },
-    { val: "12:00 PM", isChecked: true },
-    { val: "1:00 PM", isChecked: true },
-    { val: "2:00 PM", isChecked: true },
-    { val: "3:00 PM", isChecked: true },
-    { val: "4:00 PM", isChecked: true },
-    { val: "5:00 PM", isChecked: true },
-    { val: "6:00 PM", isChecked: true },
-    { val: "7:00 PM", isChecked: true },
-    { val: "8:00 PM", isChecked: true },
-    { val: "9:00 PM", isChecked: true },
-    { val: "10:00 PM", isChecked: true }
-  ]
-
   const EditNotifications: React.FC<RouteComponentProps> = ({history, location}) => {
     const state: any = location.state;
 

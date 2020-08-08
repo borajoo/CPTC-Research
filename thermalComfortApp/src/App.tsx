@@ -10,6 +10,7 @@ import Table from './pages/Table';
 import WebInfo from './pages/WebInfo';
 import EditNotifications from './pages/EditNotifications';
 import SurveyComplete from './pages/SurveyComplete';
+import EditProfile from './pages/EditProfile';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,6 +43,7 @@ const App: React.FC = () => (
         <Route path="/data" component={Table} exact={true} />
         <Route path="/surveyComplete" component={SurveyComplete} exact={true} />
         <Route path="/editNotifs" component={EditNotifications} exact={true} />
+        <Route path="/editProfile" component={EditProfile} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

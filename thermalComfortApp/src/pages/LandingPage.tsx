@@ -31,6 +31,12 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
     }
   }
 
+  function launchProfile() {
+    if (location.state) {
+      history.push('/editProfile', location.state);
+    }
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -51,6 +57,12 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
                 <IonItem lines="none">
                 <IonButton  onClick={launchNotifications} className="LandingButton">
                     Edit Notifications
+                </IonButton>
+                </IonItem>
+
+                <IonItem lines="none">
+                <IonButton  onClick={launchProfile} className="LandingButton">
+                    Edit Profile
                 </IonButton>
                 </IonItem>
 

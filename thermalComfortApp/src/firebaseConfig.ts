@@ -14,7 +14,7 @@ const config = {
 firebase.initializeApp(config);
 
 export async function pushData(data: any, user: string) {
-    firebase.firestore().collection('tempPoint').add({
+    firebase.firestore().collection('users').doc(user).collection('surveys').add({
         userId: user,
         buildingNumber: data.buildingNumber,
         roomNumber: data.roomNumber,
@@ -43,6 +43,17 @@ export async function pushNotifs(data: any, user: string) {
         "6:00 PM": data.sixPm,
         "7:00 PM": data.sevenPm,
         "8:00 PM": data.eightPm,
+    });
+}
+
+export async function pushProfile(data: any, user: string) {
+    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
+    await ref.set({
+        "Age": data.age,
+        "Gender": data.gender,
+        "Zip Code": data.zipCode,
+        "Native Conditions": data.nativeConditions,
+        "Preferred Conditions": data.preferredConditions
     });
 }
 

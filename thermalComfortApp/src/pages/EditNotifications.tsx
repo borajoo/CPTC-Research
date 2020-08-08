@@ -7,7 +7,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbo
   import { pushNotifs } from '../firebaseConfig';
   import { toast } from '../toast';
 
-  let data: any = {
+  let notifData: any = {
     eightAm: true,
     nineAm: true,
     tenAm: true,
@@ -27,59 +27,59 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbo
     const state: any = location.state;
 
     function selectEightAm(e:any) {
-      data.eightAm = e.detail.checked;
+      notifData.eightAm = e.detail.checked;
     }
 
     function selectNineAm(e:any) {
-      data.nineAm = e.detail.checked;
+      notifData.nineAm = e.detail.checked;
     }
 
     function selectTenAm(e:any) {
-      data.tenAm = e.detail.checked;
+      notifData.tenAm = e.detail.checked;
     }
 
     function selectElevenAm(e:any) {
-      data.elevenAm = e.detail.checked;
+      notifData.elevenAm = e.detail.checked;
     }
 
     function selectTwelvePm(e:any) {
-      data.twelvePm = e.detail.checked;
+      notifData.twelvePm = e.detail.checked;
     }
 
     function selectOnePm(e:any) {
-      data.onePm = e.detail.checked;
+      notifData.onePm = e.detail.checked;
     }
 
     function selectTwoPm(e:any) {
-      data.twoPm = e.detail.checked;
+      notifData.twoPm = e.detail.checked;
     }
 
     function selectThreePm(e:any) {
-      data.threePm = e.detail.checked;
+      notifData.threePm = e.detail.checked;
     }
 
     function selectFourPm(e:any) {
-      data.fourPm = e.detail.checked;
+      notifData.fourPm = e.detail.checked;
     }
 
     function selectFivePm(e:any) {
-      data.fivePm = e.detail.checked;
+      notifData.fivePm = e.detail.checked;
     }
 
     function selectSixPm(e:any) {
-      data.sixPm = e.detail.checked;
+      notifData.sixPm = e.detail.checked;
     }
 
     function selectSevenPm(e:any) {
-      data.sevenPm = e.detail.checked;
+      notifData.sevenPm = e.detail.checked;
     }
 
     function selectEightPm(e:any) {
-      data.eightPm = e.detail.checked;
+      notifData.eightPm = e.detail.checked;
     }
 
     function launchHome() {
-      pushNotifs(data, state.uid)
+      pushNotifs(notifData, state.uid)
 
       history.push({
         pathname: '/landingPage',

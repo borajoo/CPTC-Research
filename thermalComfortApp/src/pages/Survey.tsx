@@ -13,7 +13,7 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     const state: any = location.state;
 
-    let dataPoint: any = {};
+    let surveyData: any = {};
 
     const sensationOptions = [
         {
@@ -97,40 +97,40 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     }
 
     function selectBuildingNumber(e:any) {
-        dataPoint.buildingNumber = e.detail.value;
+        surveyData.buildingNumber = e.detail.value;
     }
 
     function selectRoomNumber(e:any) {
-        dataPoint.roomNumber = e.detail.value;
+        surveyData.roomNumber = e.detail.value;
     }
 
     function selectThermalSensation(e:any) {
-        dataPoint.thermalSensation = e.detail.value;
+        surveyData.thermalSensation = e.detail.value;
     }
 
     function selectThermalPreference(e:any) {
-        dataPoint.thermalPreference = e.detail.value;
+        surveyData.thermalPreference = e.detail.value;
     }
 
     function selectBreezy(e:any) {
-        dataPoint.breezy = e.detail.value;
+        surveyData.breezy = e.detail.value;
     }
 
     function selectHumiditySensation(e:any) {
-        dataPoint.humiditySensation = e.detail.value;
+        surveyData.humiditySensation = e.detail.value;
     }
 
     function selectClothing(e:any) {
-        dataPoint.clothing = e.detail.value;
+        surveyData.clothing = e.detail.value;
     }
 
     function selectRecentAction(e:any) {
-        dataPoint.recentAction = e.detail.value;
+        surveyData.recentAction = e.detail.value;
     }
 
     function postData() {
         if (state.uid) {
-            pushData(dataPoint, state.uid);
+            pushData(surveyData, state.uid);
             history.push('/surveyComplete')
         }
     }
@@ -146,9 +146,9 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
               if (body.cod !== "404") {
                 let weatherData = JSON.parse(body);
                 if (weatherData.main) {
-                    dataPoint.temp = weatherData.main.temp;
-                    dataPoint.windspeed = weatherData.wind.speed;
-                    dataPoint.humidity = weatherData.main.humidity;
+                    surveyData.temp = weatherData.main.temp;
+                    surveyData.windspeed = weatherData.wind.speed;
+                    surveyData.humidity = weatherData.main.humidity;
                 }
               }
             }

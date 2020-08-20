@@ -20,5 +20,6 @@ end
 
 target 'App' do
   capacitor_pods
+  pod 'Firebase'
   # Add your Pods here
 end

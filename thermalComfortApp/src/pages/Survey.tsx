@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonBackButton,
-IonItem, IonButtons, IonNote, IonButton, IonInput, IonCard,
+IonItem, IonButtons, IonButton, IonInput, IonCard,
 IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect,
-IonSelectOption, IonRange } from '@ionic/react';
+IonSelectOption } from '@ionic/react';
 import React from 'react';
 import "../style/Login.css";
 import "../style/Survey.css";

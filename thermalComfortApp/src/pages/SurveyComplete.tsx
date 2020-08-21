@@ -1,5 +1,5 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader,
-  IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton }
+  IonCardTitle, IonCardContent, IonItem, IonButton }
   from '@ionic/react';
 import React from 'react';
 import "../style/LandingPage.css";

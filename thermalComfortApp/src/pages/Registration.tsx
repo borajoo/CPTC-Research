@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons,
-IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader,
-IonCardContent, IonCardTitle, IonLabel, IonCheckbox } from '@ionic/react';
+  IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader,
+  IonCardContent, IonCardTitle, IonLabel, IonCheckbox } from '@ionic/react';
 import React, { useState } from 'react';
 import { registerUser } from '../firebaseConfig';
 import { toast } from '../toast';

@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
   IonItem, IonLabel, IonCard, IonCardContent, IonCardHeader, IonCardTitle,
   IonSelect, IonSelectOption, IonInput, IonBackButton, IonButtons, IonButton }
-  from '@ionic/react';
+from '@ionic/react';
 import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router';
 import "../style/Survey.css";
@@ -23,26 +23,6 @@ const SetProfile: React.FC<RouteComponentProps> = ({history, location}) => {
     nativeConditions: nativeConditions,
     preferredConditions: preferredConditions
   };
-
-  function selectAge(e:any) {
-    profileData.age = e.detail.value;
-  }
-
-  function selectGender(e:any) {
-    profileData.gender = e.detail.value;
-  }
-
-  function selectNativeLocation(e:any) {
-    profileData.nativeLocation = e.detail.value;
-  }
-
-  function selectNativeConditions(e:any) {
-    profileData.nativeConditions = e.detail.value;
-  }
-
-  function selectPrefConditions(e:any) {
-    profileData.preferredConditions = e.detail.value;
-  }
 
   function postProfile(){
     if (state.uid) {

@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
-IonItem, IonButton, IonInput, IonCard, IonCardHeader,
-IonCardContent, IonCardTitle, IonLabel } from '@ionic/react';
+  IonItem, IonButton, IonInput, IonCard, IonCardHeader,
+  IonCardContent, IonCardTitle, IonLabel } from '@ionic/react';
 import React, { useState } from 'react';
 import { loginUser } from '../firebaseConfig';
 import "../style/Login.css";
@@ -26,7 +26,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
       toast('Error logging in with your credentials');
     }
   }
-  
+
   return (
   <IonPage>
     <IonHeader>
@@ -44,7 +44,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
         </IonCardHeader>
 
         <IonCardContent>
-          
+
           <IonItem>
             <IonLabel position="stacked">Email</IonLabel>
             <IonInput
@@ -74,7 +74,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     </IonContent>
   </IonPage>
 );
-  
+
 };
 
 export default Home;

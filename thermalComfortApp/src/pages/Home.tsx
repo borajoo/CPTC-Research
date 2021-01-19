@@ -27,6 +27,12 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     }
   }
 
+  function goResetPassword() {
+    history.push({
+      pathname: '/resetPassword',
+    });
+  }
+
   return (
   <IonPage>
     <IonHeader>
@@ -63,6 +69,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
               onIonChange={(e: any) => setPassword(e.target.value)}
             />
           </IonItem>
+            <IonLabel><a href="/resetPassword">Forgot password?</a></IonLabel>
             <IonButton className="LoginButton" onClick={login}>
               Login
             </IonButton>

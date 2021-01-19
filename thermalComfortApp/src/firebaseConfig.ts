@@ -75,9 +75,20 @@ export async function loginUser(email: string, password: string) {
 export async function registerUser(email: string, password: string) {
     // authenticate with firebase
     try {
-        const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        firebase.auth().createUserWithEmailAndPassword(email, password);
         return true;
     } catch(error) {
+        toast(error.message, 4000);
+        return false;
+    }
+}
+
+export async function resetPassword(email: string) {
+    try {
+        firebase.auth().sendPasswordResetEmail(email);
+        return true;
+    }
+    catch(error) {
         toast(error.message, 4000);
         return false;
     }

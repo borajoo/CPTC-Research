@@ -59,6 +59,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
               onIonChange={(e: any) => setEmail(e.target.value)}
             />
           </IonItem>
+          
 
           <IonItem>
             <IonLabel position="stacked">Password</IonLabel>

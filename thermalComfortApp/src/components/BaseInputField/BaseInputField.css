@@ -1,0 +1,11 @@
+.baselabel {
+    color: #124B35;
+    font-size: 14px;
+}
+
+.baseinput {
+    border-radius: 2px;
+    border: 1px solid #124B35;
+    padding: 10px;
+    outline-color: #c69214;
+}

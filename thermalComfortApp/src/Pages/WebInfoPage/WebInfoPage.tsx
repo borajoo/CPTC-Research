@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
    IonButton, IonRow,IonGrid, IonCol, IonImg, IonButtons} from '@ionic/react';
 import React from 'react';
-import "../style/info.css";
+import "./WebInfoPage.css";
 import { RouteComponentProps } from 'react-router';
 
 const WebInfo: React.FC<RouteComponentProps> = ({history}) => {

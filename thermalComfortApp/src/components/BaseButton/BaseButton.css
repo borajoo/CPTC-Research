@@ -1,0 +1,15 @@
+.basebutton {
+    width: min-content;
+    color: white;
+    background-color: #124B35;
+    padding: 13px;
+    font-weight: 450;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.42); 
+    box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.42);
+    outline-color: #c69214;
+}
+
+.basebutton:hover {
+    background-color: #0f4731;
+}

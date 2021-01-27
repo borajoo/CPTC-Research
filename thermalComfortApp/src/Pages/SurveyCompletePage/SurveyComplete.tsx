@@ -2,7 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardH
   IonCardTitle, IonCardContent, IonItem, IonButton }
   from '@ionic/react';
 import React from 'react';
-import "../style/LandingPage.css";
+import "./SurveyComplete.css";
 import { RouteComponentProps } from 'react-router';
 
 const SurveyComplete: React.FC<RouteComponentProps> = ({history}) => {

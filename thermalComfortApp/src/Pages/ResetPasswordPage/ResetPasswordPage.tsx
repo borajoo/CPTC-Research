@@ -2,8 +2,8 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardH
   IonCardTitle, IonCardContent, IonItem, IonButton, IonLabel, IonInput }
   from '@ionic/react';
 import React, { useState } from 'react';
-import "../style/Survey.css";
-import { resetPassword } from "../firebaseConfig"
+import "./ResetPasswordPage.css";
+import { resetPassword } from "../../firebaseConfig"
 import { RouteComponentProps } from 'react-router';
 
 const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {

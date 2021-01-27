@@ -3,10 +3,9 @@ IonItem, IonButtons, IonButton, IonInput, IonCard,
 IonCardHeader, IonCardContent, IonCardTitle, IonLabel, IonSelect,
 IonSelectOption } from '@ionic/react';
 import React from 'react';
-import "../style/Login.css";
-import "../style/Survey.css";
+import "./SurveyPage.css";
 import { RouteComponentProps } from 'react-router';
-import { pushData } from '../firebaseConfig';
+import { pushData } from '../../firebaseConfig';
 var request = require('request');
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {

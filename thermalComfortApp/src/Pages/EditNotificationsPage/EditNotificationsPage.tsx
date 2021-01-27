@@ -3,9 +3,9 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbo
   from '@ionic/react';
 import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router';
-import "../style/Notifications.css";
-import { pushNotifs } from '../firebaseConfig';
-import { toast } from '../toast';
+import "./EditNotificationsPage.css";
+import { pushNotifs } from '../../firebaseConfig';
+import { toast } from '../../toast';
 
 let notifData: any = {
   eightAm: true,

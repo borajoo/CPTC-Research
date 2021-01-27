@@ -4,8 +4,8 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
 from '@ionic/react';
 import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router';
-import "../style/Survey.css";
-import { pushProfile } from '../firebaseConfig';
+import "./EditProfile.css";
+import { pushProfile } from '../../firebaseConfig';
 
 const SetProfile: React.FC<RouteComponentProps> = ({history, location}) => {
   const state: any = location.state;

@@ -2,16 +2,16 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import Registration from './pages/Registration';
-import LandingPage from './pages/LandingPage';
-import Survey from './pages/Survey';
-import WebInfo from './pages/WebInfo';
-import EditNotifications from './pages/EditNotifications';
-import SurveyComplete from './pages/SurveyComplete';
-import EditProfile from './pages/EditProfile';
-import ResetPassword from './pages/ResetPassword';
-import ResetPasswordConfirmation from './pages/ResetPasswordConfirmation';
+import Home from './Pages/HomePage/HomePage';
+import Registration from './Pages/RegistrationPage/RegistrationPage';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import Survey from './Pages/SurveyPage/SurveyPage';
+import WebInfo from './Pages/WebInfoPage/WebInfoPage';
+import EditNotifications from './Pages/EditNotificationsPage/EditNotificationsPage';
+import SurveyComplete from './Pages/SurveyCompletePage/SurveyComplete';
+import EditProfile from './Pages/EditProfilePage/EditProfile';
+import ResetPassword from './Pages/ResetPasswordPage/ResetPasswordPage';
+import ResetPasswordConfirmation from './Pages/ResetPasswordConfirmationPage/ResetPasswordConfirmation';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,16 +36,17 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/info" component={WebInfo} exact={true} />
         <Route path="/" component={Home} exact={true} />
+        <Route path="/info" component={WebInfo} exact={true} />
         <Route path="/registration" component={Registration} exact={true} />
-        <Route path="/landingPage" component={LandingPage} exact={true} />
+        <Route path="/landingpage" component={LandingPage} exact={true} />
         <Route path="/survey" component={Survey} exact={true} />
-        <Route path="/surveyComplete" component={SurveyComplete} exact={true} />
-        <Route path="/editNotifs" component={EditNotifications} exact={true} />
-        <Route path="/editProfile" component={EditProfile} exact={true} />
-        <Route path="/resetPassword" component={ResetPassword} exact={true} />
-        <Route path="/resetPasswordConfirmation" component={ResetPasswordConfirmation} exact={true} />
+        <Route path="/surveycomplete" component={SurveyComplete} exact={true} />
+        <Route path="/editnotifs" component={EditNotifications} exact={true} />
+        <Route path="/editprofile" component={EditProfile} exact={true} />
+        <Route path="/resetpassword" component={ResetPassword} exact={true} />
+        <Route path="/resetpasswordconfirmation" component={ResetPasswordConfirmation} exact={true} />
+        {/* <Route path="/" render={() => <div>404</div>} /> */}
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

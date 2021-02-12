@@ -13,27 +13,16 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardH
     }
 
     return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle></IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonCard>
-            <IonCardHeader>
-              <IonCardTitle>Your password reset email has been sent.</IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-                <IonItem lines="none">
-                  <IonButton  onClick={launchHome} className="LandingButton">
-                    Return to Home
-                  </IonButton>
-                </IonItem>
-              </IonCardContent>
-          </IonCard>
-        </IonContent>
-      </IonPage>
+      <div className="login-page-container">
+        <div className="login-container">
+          <div className="login-subtitle">
+            Confirmation
+          </div>
+          <div className="body-text">
+          Your password reset email has been sent! Check your email to finish resetting your password.          </div>
+          <a className="return-login" href="/">Return to Login</a>
+        </div>
+      </div>
     );
   };
 

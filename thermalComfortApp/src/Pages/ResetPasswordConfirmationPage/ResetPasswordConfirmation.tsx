@@ -20,7 +20,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardH
           </div>
           <div className="body-text">
           Your password reset email has been sent! Check your email to finish resetting your password.          </div>
-          <a className="return-login" href="/">Return to Login</a>
+          <a className="confirm-return-login" href="/">Return to Login</a>
         </div>
       </div>
     );

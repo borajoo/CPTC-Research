@@ -14,10 +14,10 @@ const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {
   function postReset() {
     if (email) {
       resetPassword(email)
+      history.push({
+        pathname: '/resetPasswordConfirmation',
+      });
     }
-    history.push({
-      pathname: '/resetPasswordConfirmation',
-    });
   }
 
   return (

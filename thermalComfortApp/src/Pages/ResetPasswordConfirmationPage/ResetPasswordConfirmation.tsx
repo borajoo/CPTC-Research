@@ -1,17 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader,
-    IonCardTitle, IonCardContent, IonItem, IonButton }
-    from '@ionic/react';
   import React from 'react';
   import "./ResetPasswordConfirmation.css";
   import { RouteComponentProps } from 'react-router';
 
   const ResetPasswordConfirmation: React.FC<RouteComponentProps> = ({history}) => {
-    function launchHome() {
-      history.push({
-        pathname: '/',
-      });
-    }
-
     return (
       <div className="login-page-container">
         <div className="login-container">

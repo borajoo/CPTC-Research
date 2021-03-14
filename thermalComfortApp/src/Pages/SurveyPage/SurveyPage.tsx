@@ -6,11 +6,10 @@ import React from 'react';
 import "./SurveyPage.css";
 import { RouteComponentProps } from 'react-router';
 import { pushData } from '../../firebaseConfig';
-var request = require('request');
+import { useAuth } from '../../contexts/AuthContext'
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
-
-    const state: any = location.state;
+    const { currentUser } = useAuth();
 
     let surveyData: any = {};
 
@@ -128,30 +127,10 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     }
 
     function postData() {
-        if (state.uid) {
-            pushData(surveyData, state.uid);
+        if (currentUser) {
+            pushData(surveyData, currentUser.email);
             history.push('/surveyComplete')
         }
-    }
-
-    function getWeatherData(e:any){
-        let apiKey = 'a28b0237f94d95bbd08c26352f7c7bdb';
-        let city = e.detail.value;
-        let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-        request(url, function (err:any, response:any, body:any) {
-            if(err){
-                return;
-            } else {
-              if (body.cod !== "404") {
-                let weatherData = JSON.parse(body);
-                if (weatherData.main) {
-                    surveyData.temp = weatherData.main.temp;
-                    surveyData.windspeed = weatherData.wind.speed;
-                    surveyData.humidity = weatherData.main.humidity;
-                }
-              }
-            }
-          });
     }
 
   return (

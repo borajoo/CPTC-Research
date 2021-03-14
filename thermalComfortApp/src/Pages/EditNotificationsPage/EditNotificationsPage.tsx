@@ -1,11 +1,12 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCheckbox, IonList,
   IonItem, IonLabel, IonCard, IonCardContent, IonButton }
   from '@ionic/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import "./EditNotificationsPage.css";
 import { pushNotifs } from '../../firebaseConfig';
 import { toast } from '../../toast';
+import { useAuth } from '../../contexts/AuthContext'
 
 let notifData: any = {
   eightAm: true,
@@ -23,8 +24,8 @@ let notifData: any = {
   eightPm: true,
 };
 
-const EditNotifications: React.FC<RouteComponentProps> = ({history, location}) => {
-  const state: any = location.state;
+const EditNotifications: React.FC<RouteComponentProps> = ({history}) => {
+  const { currentUser } = useAuth();
 
   function selectEightAm(e:any) {
     notifData.eightAm = e.detail.checked;
@@ -79,7 +80,7 @@ const EditNotifications: React.FC<RouteComponentProps> = ({history, location
   }
 
   function launchHome() {
-    pushNotifs(notifData, state.uid)
+    pushNotifs(notifData, currentUser.email);
 
     history.push({
       pathname: '/landingPage',

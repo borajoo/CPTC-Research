@@ -1,19 +1,17 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader,
-  IonCardTitle, IonCardContent, IonItem, IonButton, IonLabel, IonInput }
-  from '@ionic/react';
 import React, { useState } from 'react';
 import "./ResetPasswordPage.css";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";
 import BaseButton from "../../components/BaseButton/BaseButton";
-import { resetPassword } from "../../firebaseConfig"
+import { useAuth } from '../../contexts/AuthContext'
 import { RouteComponentProps } from 'react-router';
 
 const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState<string>();
+  const { resetPassword } = useAuth();
 
   function postReset() {
     if (email) {
-      resetPassword(email)
+      resetPassword(email);
       history.push({
         pathname: '/resetPasswordConfirmation',
       });

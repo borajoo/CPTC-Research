@@ -1,41 +1,28 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../firebaseConfig';
 import "./HomePage.css";
 import BaseButton from "../../components/BaseButton/BaseButton";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";
 import { RouteComponentProps } from 'react-router';
 import { toast } from '../../toast';
-import loginlogo from '../../assets/loginlogo.png';
+import { useAuth } from "../../contexts/AuthContext";
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth();
 
-  async function login() {
-    const res = await loginUser(email, password);
-
-    if (res && res.user) {
-      setPassword("");
-      setEmail("");
-      history.push({
-        pathname: 'landingPage',
-        state: { uid: res.user.uid},
-      });
-
-    } else {
-      toast('Error logging in with your credentials');
+  async function handleLogin() {
+    try {
+      await login(email, password);
+      history.push("/landingpage");
+    } catch (error) {
+      toast(`Error logging in: ${error}`);
     }
   }
 
   function goRegister() {
     history.push({
       pathname: '/registration'
-    });
-  }
-
-  function goResetPassword() {
-    history.push({
-      pathname: '/resetPassword',
     });
   }
 
@@ -71,7 +58,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
           </div>
           <a className="forgot-pass" href="/resetPassword">Forgot password?</a>
           <div className="login-button">
-            <BaseButton onClick={login} width={'350px'}>Login</BaseButton>
+            <BaseButton onClick={handleLogin} width={'350px'}>Login</BaseButton>
           </div>
           <div className="new-user">
             New User

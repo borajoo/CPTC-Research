@@ -1,4 +1,3 @@
-import { toast } from './toast'
 import * as firebase from 'firebase'
 
 const config = {
@@ -13,9 +12,8 @@ const config = {
 
 firebase.initializeApp(config);
 
-export async function pushData(data: any, user: string) {
-    firebase.firestore().collection('users').doc(user).collection('surveys').add({
-        userId: user,
+export async function pushData(data: any, userEmail: string) {
+    firebase.firestore().collection('users').doc(userEmail).collection('surveys').add({
         buildingNumber: data.buildingNumber,
         roomNumber: data.roomNumber,
         thermalSensation: data.thermalSensation,
@@ -27,8 +25,8 @@ export async function pushData(data: any, user: string) {
     });
 }
 
-export async function pushNotifs(data: any, user: string) {
-    const ref = firebase.firestore().collection('users').doc(user).collection('notifications').doc('notifications');
+export async function pushNotifs(data: any, userEmail: string) {
+    const ref = firebase.firestore().collection('users').doc(userEmail).collection('notifications').doc('notifications');
     await ref.set({
         "8:00 AM": data.eightAm,
         "9:00 AM": data.nineAm,
@@ -46,50 +44,24 @@ export async function pushNotifs(data: any, user: string) {
     });
 }
 
-export async function pushProfile(data: any, user: string) {
-    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
+export async function getProfile(userEmail: string) {
+    return firebase.firestore()
+        .collection('users')
+        .doc(userEmail)
+        .collection('profile')
+        .doc('profile')
+        .get();
+}
+
+export async function pushProfile(data: any, userEmail: string) {
+    const ref = firebase.firestore().collection('users').doc(userEmail).collection('profile').doc('profile');
     await ref.set({
-        "Age": data.age,
-        "Gender": data.gender,
-        "Zip Code": data.zipCode,
-        "Native Conditions": data.nativeConditions,
-        "Preferred Conditions": data.preferredConditions
+        "age": data.age,
+        "gender": data.gender,
+        "zipCode": data.zipCode,
+        "nativeConditions": data.nativeConditions,
+        "prefConditions": data.preferredConditions
     });
 }
 
-export function logoutUser() {
-    return firebase.auth().signOut()
-}
-
-export async function loginUser(email: string, password: string) {
-    // authenticate with firebase
-    try {
-        const res = await firebase.auth().signInWithEmailAndPassword(email, password);
-        return res;
-    } catch(error) {
-        toast(error.message, 4000)
-        return false;
-    }
-}
-
-export async function registerUser(email: string, password: string) {
-    // authenticate with firebase
-    try {
-        firebase.auth().createUserWithEmailAndPassword(email, password);
-        return true;
-    } catch(error) {
-        toast(error.message, 4000);
-        return false;
-    }
-}
-
-export async function resetPassword(email: string) {
-    try {
-        firebase.auth().sendPasswordResetEmail(email);
-        return true;
-    }
-    catch(error) {
-        toast(error.message, 4000);
-        return false;
-    }
-}
+export const auth = firebase.auth();

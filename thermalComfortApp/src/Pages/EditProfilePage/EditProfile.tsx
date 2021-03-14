@@ -2,33 +2,55 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
   IonItem, IonLabel, IonCard, IonCardContent, IonCardHeader, IonCardTitle,
   IonSelect, IonSelectOption, IonInput, IonBackButton, IonButtons, IonButton }
 from '@ionic/react';
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import "./EditProfile.css";
-import { pushProfile } from '../../firebaseConfig';
+import { toast } from '../../toast';
+import { pushProfile, getProfile } from '../../firebaseConfig';
+import { useAuth } from '../../contexts/AuthContext'
 
 const SetProfile: React.FC<RouteComponentProps> = ({history, location}) => {
-  const state: any = location.state;
+  const { currentUser } = useAuth();
 
-  const [age, setAge] = useState<string>();
-  const [gender, setGender] = useState<string>();
-  const [zipCode, setZipCode] = useState<string>();
-  const [nativeConditions, setNativeConditions] = useState<string>();
-  const [preferredConditions, setPrefConditions] = useState<string>();
+  const [age, setAge] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [zipCode, setZipCode] = useState<string>("");
+  const [nativeConditions, setNativeConditions] = useState<string>("");
+  const [preferredConditions, setPrefConditions] = useState<string>("");
 
-  let profileData: any = {
-    age: age,
-    gender: gender,
-    zipCode: zipCode,
-    nativeConditions: nativeConditions,
-    preferredConditions: preferredConditions
-  };
+  useEffect(() => {
+    // eslint-disable-next-line
+    getProfile(currentUser.email).then((document) => {
+      if (document.exists) {
+        const profileData = document.data();
+        console.log(profileData);
+        if (profileData) {
+          setAge(profileData.age);
+          setGender(profileData.gender);
+          setZipCode(profileData.zipCode);
+          setNativeConditions(profileData.nativeConditions);
+          setPrefConditions(profileData.prefConditions);
+        }
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []);
 
-  function postProfile(){
-    if (state.uid) {
-      pushProfile(profileData, state.uid);
+  function postProfile() {
+    let profileData: any = {
+      age: age,
+      gender: gender,
+      zipCode: zipCode,
+      nativeConditions: nativeConditions,
+      preferredConditions: preferredConditions
+    };
+
+    if (currentUser) {
+      pushProfile(profileData, currentUser.email);
+      toast("Profile updated successfully!");
       history.push('/landingPage')
-  }
+    }
   }
 
   return(

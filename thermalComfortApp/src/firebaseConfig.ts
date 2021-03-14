@@ -46,14 +46,23 @@ export async function pushNotifs(data: any, user: string) {
     });
 }
 
-export async function pushProfile(data: any, user: string) {
-    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
+export async function getProfile(userEmail: string) {
+    return firebase.firestore()
+        .collection('users')
+        .doc(userEmail)
+        .collection('profile')
+        .doc('profile')
+        .get();
+}
+
+export async function pushProfile(data: any, userEmail: string) {
+    const ref = firebase.firestore().collection('users').doc(userEmail).collection('profile').doc('profile');
     await ref.set({
-        "Age": data.age,
-        "Gender": data.gender,
-        "Zip Code": data.zipCode,
-        "Native Conditions": data.nativeConditions,
-        "Preferred Conditions": data.preferredConditions
+        "age": data.age,
+        "gender": data.gender,
+        "zipCode": data.zipCode,
+        "nativeConditions": data.nativeConditions,
+        "prefConditions": data.preferredConditions
     });
 }
 
@@ -93,3 +102,5 @@ export async function resetPassword(email: string) {
         return false;
     }
 }
+
+export const auth = firebase.auth();

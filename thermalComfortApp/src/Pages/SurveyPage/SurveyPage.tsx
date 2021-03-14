@@ -6,11 +6,14 @@ import React from 'react';
 import "./SurveyPage.css";
 import { RouteComponentProps } from 'react-router';
 import { pushData } from '../../firebaseConfig';
+import { useAuth } from '../../contexts/AuthContext'
+
 var request = require('request');
 
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
 
     const state: any = location.state;
+    const { currentUser } = useAuth();
 
     let surveyData: any = {};
 
@@ -128,8 +131,8 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
     }
 
     function postData() {
-        if (state.uid) {
-            pushData(surveyData, state.uid);
+        if (currentUser) {
+            pushData(surveyData, currentUser.email);
             history.push('/surveyComplete')
         }
     }

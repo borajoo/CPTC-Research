@@ -6,12 +6,14 @@ import { registerUser } from '../../firebaseConfig';
 import { toast } from '../../toast';
 import "./RegistrationPage.css";
 import { RouteComponentProps } from 'react-router';
+import { useAuth } from "../../contexts/AuthContext";
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
   const [terms, setTerms] = useState(false);
+  const { signup } = useAuth();
 
   let checkBox = (e: any) => {
     setTerms(e.detail.checked);
@@ -23,7 +25,23 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     else
       return false;
   };
-  async function register(){
+
+  async function handleRegister() {
+    try {
+      if (!validPassword()) {
+        toast("Passwords do not match");
+        return;
+      }
+      await signup(email, password);
+      toast("Registration successful!");
+      history.push("/");
+    } catch (error) {
+      toast(`Error registering: ${error}`);
+    }
+  }
+
+  /*
+  async function register() {
     //validation
     if(password !== cpassword && password !== '') {
       toast('Passwords do not match');
@@ -38,8 +56,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
       }
     }
   }
-
-
+  */
 
   return (
     <IonPage>
@@ -97,7 +114,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
                 Accept Terms and Conditions</a>
               </IonLabel>
             </IonItem>
-            <IonButton className="LoginButton" onClick={() => register()}
+            <IonButton className="LoginButton" onClick={() => handleRegister()}
              disabled={!terms && !(validPassword())}
              routerLink="/registration">
               Register</IonButton>

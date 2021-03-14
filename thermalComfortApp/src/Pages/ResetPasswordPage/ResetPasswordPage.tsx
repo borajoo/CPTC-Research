@@ -1,6 +1,3 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader,
-  IonCardTitle, IonCardContent, IonItem, IonButton, IonLabel, IonInput }
-  from '@ionic/react';
 import React, { useState } from 'react';
 import "./ResetPasswordPage.css";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";

@@ -1,7 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem,  IonButton,
   IonCard, IonCardContent } from '@ionic/react';
 import React from 'react';
-import { logoutUser } from '../../firebaseConfig'
 import { RouteComponentProps } from 'react-router';
 import "./LandingPage.css";
 import { toast } from '../../toast'
@@ -19,17 +18,6 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
       toast(`Error logging out: ${error}`);
     }
   }
-
-  /*
-  async function logout(){
-    await logoutUser();
-    toast('You have logged out!');
-    history.push({
-      pathname: '/',
-      state: {email: '', password: ''},
-    });
-  }
-  */
 
   function launchSurvey() {
     if (location.state) {

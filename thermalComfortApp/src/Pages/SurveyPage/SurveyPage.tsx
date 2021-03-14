@@ -8,11 +8,7 @@ import { RouteComponentProps } from 'react-router';
 import { pushData } from '../../firebaseConfig';
 import { useAuth } from '../../contexts/AuthContext'
 
-var request = require('request');
-
 const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
-
-    const state: any = location.state;
     const { currentUser } = useAuth();
 
     let surveyData: any = {};
@@ -135,26 +131,6 @@ const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
             pushData(surveyData, currentUser.email);
             history.push('/surveyComplete')
         }
-    }
-
-    function getWeatherData(e:any){
-        let apiKey = 'a28b0237f94d95bbd08c26352f7c7bdb';
-        let city = e.detail.value;
-        let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-        request(url, function (err:any, response:any, body:any) {
-            if(err){
-                return;
-            } else {
-              if (body.cod !== "404") {
-                let weatherData = JSON.parse(body);
-                if (weatherData.main) {
-                    surveyData.temp = weatherData.main.temp;
-                    surveyData.windspeed = weatherData.wind.speed;
-                    surveyData.humidity = weatherData.main.humidity;
-                }
-              }
-            }
-          });
     }
 
   return (

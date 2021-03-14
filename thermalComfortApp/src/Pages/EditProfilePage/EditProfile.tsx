@@ -19,6 +19,7 @@ const SetProfile: React.FC<RouteComponentProps> = ({history, location}) => {
   const [preferredConditions, setPrefConditions] = useState<string>("");
 
   useEffect(() => {
+    // eslint-disable-next-line
     getProfile(currentUser.email).then((document) => {
       if (document.exists) {
         const profileData = document.data();

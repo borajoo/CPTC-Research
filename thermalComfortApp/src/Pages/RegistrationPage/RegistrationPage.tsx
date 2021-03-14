@@ -2,7 +2,6 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons,
   IonBackButton, IonItem, IonButton, IonInput, IonCard, IonCardHeader,
   IonCardContent, IonCardTitle, IonLabel, IonCheckbox } from '@ionic/react';
 import React, { useState } from 'react';
-import { registerUser } from '../../firebaseConfig';
 import { toast } from '../../toast';
 import "./RegistrationPage.css";
 import { RouteComponentProps } from 'react-router';
@@ -39,24 +38,6 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
       toast(`Error registering: ${error}`);
     }
   }
-
-  /*
-  async function register() {
-    //validation
-    if(password !== cpassword && password !== '') {
-      toast('Passwords do not match');
-      return false;
-    } else {
-      const res = await registerUser(email, password)
-      if (res) {
-        toast('Sucessful register');
-        history.push({
-          pathname: '/',
-        });
-      }
-    }
-  }
-  */
 
   return (
     <IonPage>

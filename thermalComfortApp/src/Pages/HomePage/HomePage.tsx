@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../firebaseConfig';
 import "./HomePage.css";
 import BaseButton from "../../components/BaseButton/BaseButton";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";
 import { RouteComponentProps } from 'react-router';
 import { toast } from '../../toast';
-import loginlogo from '../../assets/loginlogo.png';
 import { useAuth } from "../../contexts/AuthContext";
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
@@ -20,32 +18,11 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
     } catch (error) {
       toast(`Error logging in: ${error}`);
     }
-    /*
-    const res = await loginUser(email, password);
-
-    if (res && res.user) {
-      setPassword("");
-      setEmail("");
-      history.push({
-        pathname: 'landingPage',
-        state: { uid: res.user.uid},
-      });
-
-    } else {
-      toast('Error logging in with your credentials');
-    }
-    */
   }
 
   function goRegister() {
     history.push({
       pathname: '/registration'
-    });
-  }
-
-  function goResetPassword() {
-    history.push({
-      pathname: '/resetPassword',
     });
   }
 

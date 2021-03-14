@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Home from './Pages/HomePage/HomePage';
 import Registration from './Pages/RegistrationPage/RegistrationPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
@@ -42,11 +43,11 @@ const App: React.FC = () => (
           <Route path="/" component={Home} exact={true} />
           <Route path="/info" component={WebInfo} exact={true} />
           <Route path="/registration" component={Registration} exact={true} />
-          <Route path="/landingpage" component={LandingPage} exact={true} />
-          <Route path="/survey" component={Survey} exact={true} />
-          <Route path="/surveycomplete" component={SurveyComplete} exact={true} />
-          <Route path="/editnotifs" component={EditNotifications} exact={true} />
-          <Route path="/editprofile" component={EditProfile} exact={true} />
+          <PrivateRoute path="/landingpage" component={LandingPage} exact={true} />
+          <PrivateRoute path="/survey" component={Survey} exact={true} />
+          <PrivateRoute path="/surveycomplete" component={SurveyComplete} exact={true} />
+          <PrivateRoute path="/editnotifs" component={EditNotifications} exact={true} />
+          <PrivateRoute path="/editprofile" component={EditProfile} exact={true} />
           <Route path="/resetpassword" component={ResetPassword} exact={true} />
           <Route path="/resetpasswordconfirmation" component={ResetPasswordConfirmation} exact={true} />
           {/* <Route path="/" render={() => <div>404</div>} /> */}

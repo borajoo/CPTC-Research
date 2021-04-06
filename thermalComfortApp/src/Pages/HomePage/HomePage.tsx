@@ -5,7 +5,7 @@ import BaseButton from "../../components/BaseButton/BaseButton";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";
 import { RouteComponentProps } from 'react-router';
 import { toast } from '../../toast';
-import loginlogo from '../../assets/loginlogo.png';
+import CP_logo_CMYK_grn from '../../assets/CP_logo_CMYK_grn.jpg';
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState('');
@@ -42,13 +42,8 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
   return (
     <div className="login-page-container">
       <div className="login-container">
-        {/* <img className="login-logo" src={loginlogo} /> */}
-        <div className="login-title">
-          CAL POLY
-        </div>
-        <div className="login-subtitle">
-          Thermal Comfort
-        </div>
+        <img className="login-logo" src={CP_logo_CMYK_grn} />
+        <h1>Thermal Comfort</h1>
           <div className="login-input">
             <BaseInputField
               width={'350px'}
@@ -73,9 +68,7 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
           <div className="login-button">
             <BaseButton onClick={login} width={'350px'}>Login</BaseButton>
           </div>
-          <div className="new-user">
-            New User
-          </div>
+          <div className="new-user"></div>
           <div className="register-button">
             <BaseButton className="login-button" onClick={goRegister} width={'350px'}>Register</BaseButton>
           </div>

@@ -1,14 +1,11 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem,  IonButton,
-  IonCard, IonCardContent } from '@ionic/react';
 import React from 'react';
-import { logoutUser } from '../../firebaseConfig'
 import { RouteComponentProps } from 'react-router';
 import "./LandingPage.css";
+import MainMenu from "../../components/MainMenu/MainMenu";
+import { logoutUser } from '../../firebaseConfig'
 import { toast } from '../../toast'
 
 const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
-
-  let appName = "CPTC";
 
   async function logout(){
     await logoutUser();
@@ -19,62 +16,34 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
     });
   }
 
-  function launchSurvey() {
-    if (location.state) {
-      history.push('/survey', location.state);
-    }
-  }
-
-  function launchNotifications() {
-    if (location.state) {
-      history.push('/editNotifs', location.state);
-    }
-  }
-
-  function launchProfile() {
-    if (location.state) {
-      history.push('/editProfile', location.state);
-    }
-  }
-
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>{appName}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
+    <div className="landingpage-container">
+      <MainMenu logout={logout} />
+    </div>
 
-        <IonCard className="LandingCard">
-            <IonCardContent>
-                <IonItem lines="none">
-                <IonButton  onClick={launchSurvey} className="LandingButton">
-                    Take Survey
-                </IonButton>
-                </IonItem>
+    
+                // <IonButton  onClick={launchSurvey} className="LandingButton">
+                //     Take Survey
+                // </IonButton>
+                // </IonItem>
 
-                <IonItem lines="none">
-                <IonButton  onClick={launchNotifications} className="LandingButton">
-                    Edit Notifications
-                </IonButton>
-                </IonItem>
+                // <IonItem lines="none">
+                // <IonButton  onClick={launchNotifications} className="LandingButton">
+                //     Edit Notifications
+                // </IonButton>
+                // </IonItem>
 
-                <IonItem lines="none">
-                <IonButton  onClick={launchProfile} className="LandingButton">
-                    Edit Profile
-                </IonButton>
-                </IonItem>
+                // <IonItem lines="none">
+                // <IonButton  onClick={launchProfile} className="LandingButton">
+                //     Edit Profile
+                // </IonButton>
+                // </IonItem>
 
-                <IonItem lines="none">
-                    <IonButton onClick={logout} className="LandingButton">
-                        Logout
-                    </IonButton>
-                </IonItem>
-            </IonCardContent>
-        </IonCard>
-      </IonContent>
-    </IonPage>
+                // <IonItem lines="none">
+                //     <IonButton onClick={logout} className="LandingButton">
+                //         Logout
+                //     </IonButton>
+                // </IonItem>
   );
 };
 

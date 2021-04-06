@@ -33,22 +33,17 @@
     transform: translate(-50%, 0);
 }
 
-.login-title {
-    font-family: utopia-std-headline, serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #124B35;
-    margin: 40px 0 0 0;
-    text-align: center;
-    font-size: 65px;
+.login-container img {
+    margin-top: 40px;
+    width: 400px;
 }
 
-.login-subtitle {
+.login-container h1 {
     font-weight: bold;
     color: #124B35;
     margin: 0 0 30px 0;
     text-align: center;
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .login-button {
@@ -90,6 +85,6 @@
     width: 90%;
     height: 1px;
     left: 50%;
-    bottom: 110px;
+    bottom: 98px;
     transform: translate(-50%, 0);
 }

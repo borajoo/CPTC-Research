@@ -57,6 +57,11 @@ export async function pushProfile(data: any, user: string) {
     });
 }
 
+export async function getProfile(user: string) {
+    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
+    await ref.get();
+}
+
 export function logoutUser() {
     return firebase.auth().signOut()
 }

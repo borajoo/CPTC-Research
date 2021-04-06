@@ -1,0 +1,30 @@
+.survey-container {
+    position: absolute;
+    height: 100vh;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.baseinput-div{
+    width: min-content;
+    margin: 10px auto;
+}
+
+.survey-container p {
+    width: 300px;
+    text-align: start;
+    color: #124B35;
+    font-size: 14px;
+    margin: 10px auto 0 auto;
+}
+
+.survey-container h1 {
+    margin: 34px auto 10px auto;
+}
+
+.survey-submit {
+    margin-top: 10px;
+}

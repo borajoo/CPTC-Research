@@ -1,3 +1,8 @@
+.baseinput-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .baselabel {
     color: #124B35;
     font-size: 14px;

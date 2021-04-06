@@ -1,47 +1,48 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader,
-  IonCardTitle, IonCardContent, IonItem, IonButton, IonLabel, IonInput }
-  from '@ionic/react';
 import React, { useState } from 'react';
 import "./ResetPasswordPage.css";
-import { resetPassword } from "../../firebaseConfig"
+import BaseInputField from "../../components/BaseInputField/BaseInputField";
+import BaseButton from "../../components/BaseButton/BaseButton";
+import { useAuth } from '../../contexts/AuthContext'
 import { RouteComponentProps } from 'react-router';
 
 const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {
   const [email, setEmail] = useState<string>();
+  const { resetPassword } = useAuth();
 
   function postReset() {
     if (email) {
-      resetPassword(email)
+      resetPassword(email);
+      history.push({
+        pathname: '/resetPasswordConfirmation',
+      });
     }
-    history.push({
-      pathname: '/resetPasswordConfirmation',
-    });
   }
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle></IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>Forgot your password?</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-          <IonItem>
-              <IonLabel position="stacked"> Enter your email and we'll send you a password reset email.</IonLabel>
-                <IonInput value={email} placeholder="Email" onIonChange={e => setEmail(e.detail.value!)}></IonInput>
-          </IonItem>
-          <IonButton className="SubmitButton" onClick={postReset}>
-              Submit
-          </IonButton>
-          </IonCardContent>
-        </IonCard>
-      </IonContent>
-    </IonPage>
+    <div className="login-page-container">
+      <div className="login-container">
+        <div className="login-subtitle">
+          Forgot Your Password?
+        </div>
+        <div className="body-text">
+          Enter your email address and we’ll send you a link to reset it.
+        </div>
+        <div className="login-input">
+            <BaseInputField
+              width={'350px'}
+              value={email}
+              label={'Email Address'}
+              iduser={'username'}
+              password={false}
+              onChange={(e: any) => setEmail(e.target.value)}
+            />
+        </div>
+        <div className="reset-button">
+          <BaseButton className="login-button" onClick={postReset} width={'350px'}>Reset Password</BaseButton>
+        </div>
+        <a className="return-login" href="/">Return to Login</a>
+      </div>
+    </div>
   );
 };
 

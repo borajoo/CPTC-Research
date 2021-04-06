@@ -44,26 +44,6 @@ export async function pushNotifs(data: any, userEmail: string) {
     });
 }
 
-<<<<<<< HEAD
-export async function pushProfile(data: any, user: string) {
-    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
-    await ref.set({
-        "Age": data.age,
-        "Gender": data.gender,
-        "Zip Code": data.zipCode,
-        "Native Conditions": data.nativeConditions,
-        "Preferred Conditions": data.preferredConditions
-    });
-}
-
-export async function getProfile(user: string) {
-    const ref = firebase.firestore().collection('users').doc(user).collection('profile').doc('profile');
-    await ref.get();
-}
-
-export function logoutUser() {
-    return firebase.auth().signOut()
-=======
 export async function getProfile(userEmail: string) {
     return firebase.firestore()
         .collection('users')
@@ -71,7 +51,6 @@ export async function getProfile(userEmail: string) {
         .collection('profile')
         .doc('profile')
         .get();
->>>>>>> master
 }
 
 export async function pushProfile(data: any, userEmail: string) {

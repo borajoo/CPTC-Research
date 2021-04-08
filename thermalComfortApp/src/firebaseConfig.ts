@@ -18,29 +18,38 @@ export async function pushData(data: any, userEmail: string) {
         roomNumber: data.roomNumber,
         thermalSensation: data.thermalSensation,
         thermalPreference: data.thermalPreference,
-        breezy: data.breezy,
+        airCirculationSensation: data.airCirculationSensation,
         humiditySensation: data.humiditySensation,
         clothing: data.clothing,
         recentAction: data.recentAction,
     });
 }
 
+export async function getNotifs(userEmail: string) {
+    return firebase.firestore()
+        .collection('users')
+        .doc(userEmail)
+        .collection('notifications')
+        .doc('notifications')
+        .get();
+}
+
 export async function pushNotifs(data: any, userEmail: string) {
     const ref = firebase.firestore().collection('users').doc(userEmail).collection('notifications').doc('notifications');
     await ref.set({
-        "8:00 AM": data.eightAm,
-        "9:00 AM": data.nineAm,
-        "10:00 AM": data.tenAm,
-        "11:00 AM": data.elevenAm,
-        "12:00 PM": data.twelvePm,
-        "1:00 PM": data.onePm,
-        "2:00 PM": data.twoPm,
-        "3:00 PM": data.threePm,
-        "4:00 PM": data.fourPm,
-        "5:00 PM": data.fivePm,
-        "6:00 PM": data.sixPm,
-        "7:00 PM": data.sevenPm,
-        "8:00 PM": data.eightPm,
+        "eightAm": data.eightAm,
+        "nineAm": data.nineAm,
+        "tenAm": data.tenAm,
+        "elevenAm": data.elevenAm,
+        "twelvePm": data.twelvePm,
+        "onePm": data.onePm,
+        "twoPm": data.twoPm,
+        "threePm": data.threePm,
+        "fourPm": data.fourPm,
+        "fivePm": data.fivePm,
+        "sixPm": data.sixPm,
+        "sevenPm": data.sevenPm,
+        "eightPm": data.eightPm,
     });
 }
 
@@ -56,11 +65,16 @@ export async function getProfile(userEmail: string) {
 export async function pushProfile(data: any, userEmail: string) {
     const ref = firebase.firestore().collection('users').doc(userEmail).collection('profile').doc('profile');
     await ref.set({
+        "calPolyStatus": data.calPolyStatus,
+        "biologicalSex": data.biologicalSex,
+        "genderIdentification": data.genderIdentification,
+        "ethnicity": data.ethnicity,
+        "disability": data.disability,
         "age": data.age,
-        "gender": data.gender,
-        "zipCode": data.zipCode,
-        "nativeConditions": data.nativeConditions,
-        "prefConditions": data.preferredConditions
+        "economicSituation": data.economicSituation,
+        "childhoodClimate": data.childhoodClimate,
+        "indoorThermalPreference": data.indoorThermalPreference,
+        "response": data.response,
     });
 }
 

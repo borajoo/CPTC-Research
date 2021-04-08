@@ -1,10 +1,16 @@
-.LandingCard {
-    width: 80%;
-    margin-top: 10%;
-    margin-left: 10%;
+.landingpage-container {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
 }
 
-.LandingButton {
-    margin-left: auto;
-    margin-right: auto;
+.temp{
+    /* background-color: white; */
+    width: calc(100% - 400px - 80px);
+    height: 50%;
+    margin: 40px;
+    text-align: center;
+    font-size: xx-large;
 }

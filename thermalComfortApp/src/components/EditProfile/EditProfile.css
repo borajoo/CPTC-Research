@@ -1,0 +1,32 @@
+.editprofile-container {
+    position: absolute;
+    height: 100vh;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.editprofile-container p {
+    width: 300px;
+    text-align: start;
+    color: #124B35;
+    font-size: 14px;
+    margin: 10px auto 0 auto;
+}
+
+.editprofile-container h1 {
+    font-size: 35px;
+    margin: 16px auto 10px auto;
+}
+
+.editprofile-submit {
+    margin: 10px auto 20px auto;
+}
+
+@media (max-width: 800px) {
+    .editprofile-container {
+        width: 100%;
+    }
+}

@@ -8,10 +8,12 @@ import { RouteComponentProps } from 'react-router';
 import { pushData } from '../../firebaseConfig';
 import { useAuth } from '../../contexts/AuthContext'
 
-const Survey: React.FC<RouteComponentProps> = ({history, location}) => {
+const Survey: React.FC<RouteComponentProps> = ({history}) => {
     const { currentUser } = useAuth();
 
     let surveyData: any = {};
+
+
 
     const sensationOptions = [
         {

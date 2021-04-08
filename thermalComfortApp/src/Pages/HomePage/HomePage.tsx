@@ -4,6 +4,7 @@ import BaseButton from "../../components/BaseButton/BaseButton";
 import BaseInputField from "../../components/BaseInputField/BaseInputField";
 import { RouteComponentProps } from 'react-router';
 import { toast } from '../../toast';
+import CP_logo_CMYK_grn from '../../assets/CP_logo_CMYK_grn.jpg';
 import { useAuth } from "../../contexts/AuthContext";
 
 const Home: React.FC<RouteComponentProps> = ({history}) => {
@@ -22,33 +23,28 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
 
   function goRegister() {
     history.push({
-      pathname: '/registration'
+      pathname: '/register'
     });
   }
 
   return (
     <div className="login-page-container">
       <div className="login-container">
-        {/* <img className="login-logo" src={loginlogo} /> */}
-        <div className="login-title">
-          CAL POLY
-        </div>
-        <div className="login-subtitle">
-          Thermal Comfort
-        </div>
+        <img src={CP_logo_CMYK_grn} />
+        <h1>Thermal Comfort</h1>
           <div className="login-input">
             <BaseInputField
-              width={'350px'}
+              width={window.innerWidth <= 800 ? '300px' : '350px'}
               value={email}
-              label={'Username'}
-              iduser={'username'}
+              label={'Email'}
+              iduser={'email'}
               password={false}
               onChange={(e: any) => setEmail(e.target.value)}
             />
           </div>
           <div className="login-input" style={{marginBottom: '5px'}}>
             <BaseInputField
-              width={'350px'}
+              width={window.innerWidth <= 800 ? '300px' : '350px'}
               value={password}
               label={'Password'}
               iduser={'password'}
@@ -58,13 +54,11 @@ const Home: React.FC<RouteComponentProps> = ({history}) => {
           </div>
           <a className="forgot-pass" href="/resetPassword">Forgot password?</a>
           <div className="login-button">
-            <BaseButton onClick={handleLogin} width={'350px'}>Login</BaseButton>
+            <BaseButton onClick={handleLogin} width={window.innerWidth <= 800 ? '300px' : '350px'}>Login</BaseButton>
           </div>
-          <div className="new-user">
-            New User
-          </div>
+          <div className="new-user"></div>
           <div className="register-button">
-            <BaseButton className="login-button" onClick={goRegister} width={'350px'}>Register</BaseButton>
+            <BaseButton className="login-button" onClick={goRegister} width={window.innerWidth <= 800 ? '300px' : '350px'}>Register</BaseButton>
           </div>
       </div>
     </div>

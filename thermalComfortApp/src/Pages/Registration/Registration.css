@@ -1,0 +1,26 @@
+.register2-button {
+    width: min-content;
+    margin: 30px auto 20px auto;
+}
+
+.consent-checkbox {
+    margin: 30px auto;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.see-consent {
+    color: #124B35;
+    font-size: 14px;
+}
+
+.see-terms:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+    .consent-checkbox {
+        width: 300px;
+    }
+}

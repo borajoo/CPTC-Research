@@ -2,15 +2,15 @@
     position: absolute;
     height: 100vh;
     width: 400px;
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .baseinput-div{
     width: min-content;
-    margin: 10px auto;
+    margin: 8px auto;
 }
 
 .survey-container p {
@@ -22,9 +22,20 @@
 }
 
 .survey-container h1 {
-    margin: 34px auto 10px auto;
+    font-size: 35px;
+    margin: 16px auto 10px auto;
 }
 
 .survey-submit {
     margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+    .survey-container {
+        width: 100%;
+    }
+
+    .survey-submit {
+        margin-bottom: 20px;
+    }
 }

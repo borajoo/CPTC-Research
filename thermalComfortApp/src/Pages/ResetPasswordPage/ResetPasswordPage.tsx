@@ -29,7 +29,7 @@ const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {
         </div>
         <div className="login-input">
             <BaseInputField
-              width={'350px'}
+              width={window.innerWidth <= 800 ? '300px' : '350px'}
               value={email}
               label={'Email Address'}
               iduser={'username'}
@@ -38,7 +38,7 @@ const ResetPassword: React.FC<RouteComponentProps> = ({history}) => {
             />
         </div>
         <div className="reset-button">
-          <BaseButton className="login-button" onClick={postReset} width={'350px'}>Reset Password</BaseButton>
+          <BaseButton className="login-button" onClick={postReset} width={window.innerWidth <= 800 ? '300px' : '350px'}>Reset Password</BaseButton>
         </div>
         <a className="return-login" href="/">Return to Login</a>
       </div>

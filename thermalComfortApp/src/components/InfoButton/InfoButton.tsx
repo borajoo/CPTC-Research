@@ -1,10 +1,11 @@
 import React from 'react';
 import './InfoButton.css';
 
-function InfoButton() {
+function InfoButton(props: any) {
+  const { onClick } = props;
 
   return (
-    <button className="infobutton">
+    <button className="infobutton" onClick={onClick}>
       i
     </button>
   )

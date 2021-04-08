@@ -1,0 +1,17 @@
+.closebutton {
+    width: max-content;
+    color: #124B35;
+    background-color: #DBDBDB;
+    padding: 8px 12px;
+    font-weight: 450;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.42); 
+    box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.42);
+    outline-color: #c69214;
+    border-radius: 50%;
+    font-size: large;
+}
+
+.closebutton:hover {
+    background-color: #cbcbcb;
+}

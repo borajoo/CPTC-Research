@@ -39,6 +39,9 @@ const LandingPage: React.FC<RouteComponentProps> = ({history, location}) => {
   return (
     <div className="landingpage-container">
       <MainMenu logout={handleLogout} />
+      {(window.innerWidth > 800) && <div className="temp">
+        Cool data visualisation coming soon!
+      </div>}
     </div>
 
     

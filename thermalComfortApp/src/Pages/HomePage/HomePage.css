@@ -15,27 +15,25 @@
     transform: translate(-50%, -50%);
 }
 
-.login-logo {
-    position: relative;
-    margin: 20px 0 0 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.login-container::after {
-    background-color: #c69214;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 10px;
-    left: 50%;
-    top: 0%;
-    transform: translate(-50%, 0);
+@media (min-width: 801px){
+    .login-container::after {
+        background-color: #c69214;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, 0);
+    }
 }
 
 .login-container img {
-    margin-top: 40px;
     width: 400px;
+    position: relative;
+    margin: 40px 0 0 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .login-container h1 {
@@ -87,4 +85,32 @@
     left: 50%;
     bottom: 98px;
     transform: translate(-50%, 0);
+}
+
+@media (max-width: 800px) {
+    .login-page-container {
+        background-color: white;
+    }
+
+    .login-container {
+        width: 100%;
+        -webkit-box-shadow: none; 
+        box-shadow: none;
+    }
+
+    .login-container img {
+        width: 320px;
+    }
+
+    .login-container h1 {
+        font-size: 30px;
+    }
+
+    .forgot-pass {
+        margin-left: 30px;
+    }
+
+    .new-user::after {
+        width: 90%;
+    }
 }

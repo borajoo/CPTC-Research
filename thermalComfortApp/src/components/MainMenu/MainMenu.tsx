@@ -1,16 +1,53 @@
 import React, { useState } from 'react';
 import './MainMenu.css';
-import CP_logo_CMYK_grn from '../../assets/CP_logo_CMYK_grn.jpg';
-import BaseButton from "../../components/BaseButton/BaseButton";
-import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
-import InfoButton from "../../components/InfoButton/InfoButton";
 import Survey from "../../components/Survey/Survey";
+import MenuHome from "../../components/MenuHome/MenuHome";
+import EditProfile from "../../components/EditProfile/EditProfile";
+import EditNotifications from "../../components/EditNotifications/EditNotifications";
 
 function MainMenu(props:any) {
+const { logout } = props;
 
+    const [showMenuHome, setShowMenuHome] = useState(true);
     const [showSurvey, setShowSurvey] = useState(false);
-    
-    //   function launchNotifications() {
+    const [showEditProfile, setShowEditProfile] = useState(false);
+    const [showEditNotifications, setShowEditNotifications] = useState(false);
+
+  return (
+    <div className="menu-container">
+        {showSurvey && <Survey toggleState={() => {
+            setShowSurvey(false);
+            setShowMenuHome(true);
+        }}/>}
+        {showMenuHome && <MenuHome toggleSurvey={() => {
+                setShowMenuHome(false);
+                setShowSurvey(true);
+            }} 
+            toggleEditProfile={() => {
+                setShowMenuHome(false);
+                setShowEditProfile(true);
+            }}
+            toggleEditNofitications={() => {
+                setShowMenuHome(false);
+                setShowEditNotifications(true);
+            }}
+            logout={logout}
+        />}
+        {showEditProfile && <EditProfile toggleState={() => {
+            setShowEditProfile(false);
+            setShowMenuHome(true);
+        }}/>}
+        {showEditNotifications && <EditNotifications toggleState={() => {
+            setShowEditNotifications(false);
+            setShowMenuHome(true);
+        }}/>}
+    </div>
+  )
+};
+
+export default MainMenu
+
+ //   function launchNotifications() {
     //     if (location.state) {
     //       history.push('/editNotifs', location.state);
     //     }
@@ -21,28 +58,3 @@ function MainMenu(props:any) {
     //       history.push('/editProfile', location.state);
     //     }
     //   }
-
-  return (
-    <div className="menu-container">
-        {/* {showSurvey && <Survey />} */}
-        <Survey />
-        <div className="top-buttons">
-            <SecondaryButton onClick={props.logout}>Log Out</SecondaryButton>
-            <InfoButton />
-        </div>
-        <img src={CP_logo_CMYK_grn} />
-        <h1>Thermal Comfort</h1>
-        <p>
-            Too hot? Too cold? Just right?
-            Tell us what you think!
-        </p>
-        <BaseButton onClick={() => {setShowSurvey(true)}} width={'300px'}>How does your room feel?</BaseButton>
-        <div className="bottom-buttons" style={{height: '100px'}}>
-            <BaseButton onClick={props.logout} width={'300px'}>Edit Profile</BaseButton>
-            <BaseButton onClick={props.logout} width={'300px'}>Edit Notifications</BaseButton>
-        </div>
-    </div>
-  )
-};
-
-export default MainMenu

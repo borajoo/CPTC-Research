@@ -14,14 +14,15 @@ firebase.initializeApp(config);
 
 export async function pushData(data: any, userEmail: string) {
     firebase.firestore().collection('users').doc(userEmail).collection('surveys').add({
-        buildingNumber: data.buildingNumber,
-        roomNumber: data.roomNumber,
-        thermalSensation: data.thermalSensation,
-        thermalPreference: data.thermalPreference,
-        airCirculationSensation: data.airCirculationSensation,
-        humiditySensation: data.humiditySensation,
-        clothing: data.clothing,
-        recentAction: data.recentAction,
+        "buildingNumber": data.buildingNumber,
+        "roomNumber": data.roomNumber,
+        "thermalSensation": data.thermalSensation,
+        "thermalPreference": data.thermalPreference,
+        "airCirculationSensation": data.airCirculationSensation,
+        "humiditySensation": data.humiditySensation,
+        "clothing": data.clothing,
+        "recentAction": data.recentAction,
+        "timeStamp": data.timestamp
     });
 }
 

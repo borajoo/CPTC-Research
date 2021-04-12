@@ -29,4 +29,8 @@
     .editprofile-container {
         width: 100%;
     }
+
+    .editprofile-submit {
+        margin: 10px auto 70px auto;
+    }
 }

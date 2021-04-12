@@ -9,12 +9,39 @@ import { pushData } from '../../firebaseConfig';
 import { useAuth } from '../../contexts/AuthContext'
 import { toast } from '../../toast'
 
+var request = require('request');
 
 function Survey(props: any) {
   const { toggleState } = props;
   const { currentUser } = useAuth();
   let canSubmit = true;
   let surveyData: any = {};
+  const date = new Date;
+
+  function getWeatherData(){
+    let apiKey = 'a28b0237f94d95bbd08c26352f7c7bdb';
+    let city = "San Luis Obispo";
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+    request(url, function (err:any, response:any, body:any) {
+        if(err){
+            return;
+        }
+        else {
+          if (body.cod !== "404") {
+            let weatherData = JSON.parse(body);
+            if (weatherData.main) {
+              console.log(weatherData.main.temp);
+              console.log(weatherData.wind.speed);
+              console.log(weatherData.main.humidity);
+              // surveyData.temp = weatherData.main.temp;
+              // surveyData.windspeed = weatherData.wind.speed;
+              // surveyData.humidity = weatherData.main.humidity;
+            }
+          }
+        }
+    });
+  }
+  getWeatherData();
 
   function postData() {
     if (currentUser) {
@@ -26,6 +53,7 @@ function Survey(props: any) {
       humid != '' ? surveyData.humiditySensation = humid : canSubmit = false;
       clothing != '' ? surveyData.clothing = clothing : canSubmit = false;
       activities != [] ? surveyData.recentAction = activities : canSubmit = false;
+      surveyData.timestamp = date.toLocaleString().toString();
       if(canSubmit){
         try {
           pushData(surveyData, currentUser.email);
@@ -164,25 +192,3 @@ function Survey(props: any) {
 };
 
 export default Survey
-
-//     function getWeatherData(e:any){
-//         let apiKey = 'a28b0237f94d95bbd08c26352f7c7bdb';
-//         let city = e.detail.value;
-//         let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-//         request(url, function (err:any, response:any, body:any) {
-//             if(err){
-//                 return;
-//             } 
-//             else {
-//                 if(body.cod !== "404\") {
-//                     let weatherData = JSON.parse(body);
-//                     if (weatherData.main) {
-//                         surveyData.temp = weatherData.main.temp;
-//                         surveyData.windspeed = weatherData.wind.speed;
-//                         surveyData.humidity = weatherData.main.humidity;
-//                     }
-//                 }
-//             }
-//         });
-//     }
-// }

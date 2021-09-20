@@ -22,7 +22,10 @@ export async function pushData(data: any, userEmail: string) {
         "humiditySensation": data.humiditySensation,
         "clothing": data.clothing,
         "recentAction": data.recentAction,
-        "timeStamp": data.timestamp
+        "timeStamp": data.timestamp,
+        "temperature": data.temp,
+        "windSpeed": data.windspeed,
+        "humidity": data.humidity,
     });
 }
 
@@ -77,6 +80,14 @@ export async function pushProfile(data: any, userEmail: string) {
         "indoorThermalPreference": data.indoorThermalPreference,
         "response": data.response,
     });
+}
+
+export async function getSurveys(userEmail: string) {
+    return firebase.firestore()
+        .collection('users')
+        .doc(userEmail)
+        .collection('surveys')
+        .get();
 }
 
 export const auth = firebase.auth();

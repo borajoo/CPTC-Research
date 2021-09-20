@@ -3,15 +3,9 @@ import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import Home from './Pages/HomePage/HomePage';
-import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
+import Login from './Pages/Login/Login';
 import Registration from './Pages/Registration/Registration';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import Survey from './Pages/SurveyPage/SurveyPage';
-import WebInfo from './Pages/WebInfoPage/WebInfoPage';
-import EditNotifications from './Pages/EditNotificationsPage/EditNotificationsPage';
-import SurveyComplete from './Pages/SurveyCompletePage/SurveyComplete';
-import EditProfile from './Pages/EditProfilePage/EditProfilePage';
+import HomePage from './Pages/Home/Home';
 import ResetPassword from './Pages/ResetPasswordPage/ResetPasswordPage';
 import ResetPasswordConfirmation from './Pages/ResetPasswordConfirmationPage/ResetPasswordConfirmation';
 
@@ -41,18 +35,12 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <AuthProvider>
-          <Route path="/" component={Home} exact={true} />
-          <Route path="/info" component={WebInfo} exact={true} />
-          <Route path="/registration" component={RegistrationPage} exact={true} />
+          <Route path="/" component={Login} exact={true} />
           <Route path="/register" component={Registration} exact={true} />
-          <PrivateRoute path="/landingpage" component={LandingPage} exact={true} />
-          <PrivateRoute path="/survey" component={Survey} exact={true} />
-          <PrivateRoute path="/surveycomplete" component={SurveyComplete} exact={true} />
-          <PrivateRoute path="/editnotifs" component={EditNotifications} exact={true} />
-          <PrivateRoute path="/editprofile" component={EditProfile} exact={true} />
+          <PrivateRoute path="/home" component={HomePage} exact={true} />
           <Route path="/resetpassword" component={ResetPassword} exact={true} />
           <Route path="/resetpasswordconfirmation" component={ResetPasswordConfirmation} exact={true} />
-          {/* <Route path="/" render={() => <div>404</div>} /> */}
+          <Route path="/" render={() => <div>404</div>} />
         </AuthProvider>
       </IonRouterOutlet>
     </IonReactRouter>

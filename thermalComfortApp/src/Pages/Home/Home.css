@@ -1,0 +1,7 @@
+.home-container {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+}

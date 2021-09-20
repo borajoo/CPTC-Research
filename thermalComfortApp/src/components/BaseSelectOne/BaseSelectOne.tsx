@@ -1,13 +1,12 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './BaseSelectOne.css';
 
 function BaseSelectOne(props: any) {
-    const { optionsList, onChange, value } = props;
+    const { optionsList, onChange, value, err } = props;
 
     const StyledFormControl = withStyles({
         root: {
@@ -27,6 +26,7 @@ function BaseSelectOne(props: any) {
                 // displayEmpty
                 value={value}
                 onChange={onChange}
+                error={err}
             >
                 <MenuItem value="" disabled>
                     <em>Select One</em>

@@ -94,7 +94,7 @@ const Registration: React.FC<RouteComponentProps> = ({history}) => {
               setConsent(!consent);
             }}
           />
-          <a className="see-consent" href="https://drive.google.com/file/d/1sAONY3BuhSxu-Iswr90fKoGOrQyWIJEZ/view?usp=sharing" target="_blank">See Consent Form</a>
+          <a className="see-consent" href="https://drive.google.com/file/d/1sAONY3BuhSxu-Iswr90fKoGOrQyWIJEZ/view?usp=sharing" target="_blank" rel="noopener noreferrer">See Consent Form</a>
         </div>
         <div className="register2-button">
           <BaseButton className="login-button" onClick={handleRegister} width={window.innerWidth <= 800 ? '300px' : '350px'}>Register</BaseButton>

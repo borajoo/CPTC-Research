@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select';
 import './BaseSelectMultiple.css';
 
 function BaseSelectMultiple(props: any) {
-    const { optionsList, onChange, value } = props;
+    const { optionsList, onChange, value, err } = props;
 
     const StyledFormControl = withStyles({
         root: {
@@ -27,6 +27,7 @@ function BaseSelectMultiple(props: any) {
                 multiple
                 value={value}
                 onChange={onChange}
+                error={err}
             >
                 <MenuItem value="" disabled>
                     <em>Select All That Apply</em>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MenuHome.css';
 import CP_logo_CMYK_grn from '../../assets/CP_logo_CMYK_grn.jpg';
 import BaseButton from "../../components/BaseButton/BaseButton";
@@ -47,8 +47,11 @@ function MenuHome(props:any) {
           <div className="drawer-info">
             Thermal comfort, defined by the American Society of Heating, refrigerating and Air-Conditioning Engineers (ASHRAE) as “the condition of mind that expresses satisfaction with the thermal environment and is assessed by subjective evaluation”. <b>The purpose of this research is to understand how thermal comfort is perceived by students in higher education to predict thermal comfort conditions that could improve student success and save energy</b>. The survey results of this research, alongside the collection of various room conditions on Cal Poly’s campus, will act as data to be evaluated and taken into consideration when drafting a correlation to student success and thermal comfort perception.
           </div>
+          <a className="drawer-link" href="https://me.calpoly.edu/cptc" target="_blank">
+            Learn more!
+          </a>
         </Drawer>
-        <img src={CP_logo_CMYK_grn} />
+        <img src={CP_logo_CMYK_grn} alt="Cal Poly Logo" />
         <h1>Thermal Comfort</h1>
         <p>
             Too hot? Too cold? Just right?

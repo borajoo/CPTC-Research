@@ -1,5 +1,5 @@
 {
-  "name": "senior_project",
+  "name": "CPTC",
   "version": "0.0.1",
   "private": true,
   "homepage": "http://cptc-website.s3-website.us-east-2.amazonaws.com",
@@ -10,6 +10,7 @@
     "@ionic/react": "^4.11.10",
     "@ionic/react-router": "^4.11.10",
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.3",

@@ -1,6 +1,5 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox, { CheckboxProps } from "@material-ui/core/Checkbox";
 //import './BaseCheckbox.css';

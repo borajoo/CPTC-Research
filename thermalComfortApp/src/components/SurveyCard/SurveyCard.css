@@ -1,0 +1,31 @@
+.survey > .MuiAccordionSummary-content{
+    display: block;
+    margin: 0px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.surveys-container > .MuiAccordion-root{
+    width: 100%;
+    font-size: 16px;
+}
+
+.MuiAccordionDetails-root{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.MuiAccordionDetails-root > p{
+    margin: 6px auto;
+}
+
+.details-row {
+    margin: 0px 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

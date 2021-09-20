@@ -4,7 +4,7 @@ import './SecondaryButton.css';
 function BaseButton(props: any) {
 
   return (
-    <button className="secondarybutton" onClick={props.onClick}>
+    <button className="secondarybutton" onClick={props.onClick} style={{width: props.width, fontSize: props.fontSize}}>
       {props.children}
     </button>
   )

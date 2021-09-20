@@ -14,3 +14,10 @@
     padding: 10px;
     outline-color: #c69214;
 }
+
+.baseinput-error {
+    border-radius: 2px;
+    border: 2px solid #ff2d2d;
+    padding: 10px;
+    outline-color: #c69214;
+}

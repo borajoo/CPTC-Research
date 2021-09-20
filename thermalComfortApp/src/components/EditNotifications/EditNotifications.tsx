@@ -9,7 +9,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { toast } from '../../toast'
 
 function EditNotifications(props: any) {
-  const { toggleState } = props;
+  const { toggleState, updateState } = props;
   const { currentUser } = useAuth();
 
   const [state, setState] = React.useState({
@@ -58,7 +58,7 @@ function EditNotifications(props: any) {
     }).catch((error) => {
       console.error(error);
     });
-  }, []);
+  }, [updateState]);
 
   function postNotifs() {
     if (currentUser) {

@@ -3,7 +3,6 @@ import './EditProfile.css';
 import BaseButton from '../BaseButton/BaseButton'
 import BaseInputField from '../BaseInputField/BaseInputField';
 import BaseSelectOne from '../BaseSelectOne/BaseSelectOne';
-import BaseSelectMultiple from '../BaseSelectMultiple/BaseSelectMultiple';
 import SecondaryButton from "../../components/SecondaryButton/SecondaryButton";
 import { pushProfile, getProfile } from '../../firebaseConfig';
 import { useAuth } from '../../contexts/AuthContext'
@@ -11,8 +10,10 @@ import { toast } from '../../toast'
 
 
 function EditProfile(props: any) {
-  const { toggleState } = props;
+  const { toggleState, updateState } = props;
   const { currentUser } = useAuth();
+
+  const [trySubmit, setTrySubmit] = React.useState(false);
   
   const [calPolyStatus, setCalPolyStatus] = React.useState('');
   const [biologicalSex, setBiologicalSex] = React.useState('');
@@ -43,22 +44,23 @@ function EditProfile(props: any) {
     }).catch((error) => {
       console.error(error);
     });
-  }, []);
+  }, [updateState]);
 
   let canSubmit = true;
   let profileData: any = {};
 
   function postProfile() {
+    setTrySubmit(true);
     if (currentUser) {
-      calPolyStatus != '' ? profileData.calPolyStatus = calPolyStatus : canSubmit = false;
-      biologicalSex != '' ? profileData.biologicalSex = biologicalSex : canSubmit = false;
-      genderIdentification != '' ? profileData.genderIdentification = genderIdentification : canSubmit = false;
-      ethnicity != '' ? profileData.ethnicity = ethnicity : canSubmit = false;
-      disability != '' ? profileData.disability = disability : canSubmit = false;
-      age != '' ? profileData.age = age : canSubmit = false;
-      economicSituation != '' ? profileData.economicSituation = economicSituation : canSubmit = false;
-      childhoodClimate != '' ? profileData.childhoodClimate = childhoodClimate : canSubmit = false;
-      indoorThermalPreference != '' ? profileData.indoorThermalPreference = indoorThermalPreference : canSubmit = false;
+      calPolyStatus !== '' ? profileData.calPolyStatus = calPolyStatus : canSubmit = false;
+      biologicalSex !== '' ? profileData.biologicalSex = biologicalSex : canSubmit = false;
+      genderIdentification !== '' ? profileData.genderIdentification = genderIdentification : canSubmit = false;
+      ethnicity !== '' ? profileData.ethnicity = ethnicity : canSubmit = false;
+      disability !== '' ? profileData.disability = disability : canSubmit = false;
+      age !== '' ? profileData.age = age : canSubmit = false;
+      economicSituation !== '' ? profileData.economicSituation = economicSituation : canSubmit = false;
+      childhoodClimate !== '' ? profileData.childhoodClimate = childhoodClimate : canSubmit = false;
+      indoorThermalPreference !== '' ? profileData.indoorThermalPreference = indoorThermalPreference : canSubmit = false;
       profileData.response = response;
 
       if(canSubmit){
@@ -150,38 +152,44 @@ function EditProfile(props: any) {
         optionsList={calPolyStatusList}
         value={calPolyStatus}
         onChange={(e: any) => setCalPolyStatus(e.target.value)}
+        err={trySubmit && calPolyStatus === ''}
       />
       <p>What biological sex were you assigned at birth?</p>
       <BaseSelectOne
         optionsList={biologicalSexList}
         value={biologicalSex}
         onChange={(e: any) => setBiologicalSex(e.target.value)}
+        err={trySubmit && biologicalSex === ''}
       />
       <p>What is your gender identification?</p>
       <BaseSelectOne
         optionsList={genderIdentificationList}
         value={genderIdentification}
         onChange={(e: any) => setGenderIdentification(e.target.value)}
+        err={trySubmit && genderIdentification === ''}
       />
       <p>What is your ethnicity?</p>
       <BaseSelectOne
         optionsList={ethnicityList}
         value={ethnicity}
         onChange={(e: any) => setEthnicity(e.target.value)}
+        err={trySubmit && ethnicity === ''}
       />
       <p>Do you have a disability?</p>
       <BaseSelectOne
         optionsList={disabilityList}
         value={disability}
         onChange={(e: any) => setDisability(e.target.value)}
+        err={trySubmit && disability === ''}
       />
       <div className="baseinput-div">
         <BaseInputField
           label={'What is your age? (Ex: 19)'}
-          iduser={'room'}
+          iduser={'age'}
           width={'300px'}
           value={age}
           onChange={(e: any) => setAge(e.target.value)}
+          err={trySubmit && age === ''}
         />
       </div>
       <p>What is your family’s or was your childhood economic situation?</p>
@@ -189,18 +197,21 @@ function EditProfile(props: any) {
         optionsList={economicSituationList}
         value={economicSituation}
         onChange={(e: any) => setEconomicSituation(e.target.value)}
+        err={trySubmit && economicSituation === ''}
       />
       <p>What climate did you grow up in [ages 0-10]?</p>
       <BaseSelectOne
         optionsList={childhoodClimateList}
         value={childhoodClimate}
         onChange={(e: any) => setChildhoodClimate(e.target.value)}
+        err={trySubmit && childhoodClimate === ''}
       />
       <p>Indoor Room Condition Thermal Comfort Preference?</p>
       <BaseSelectOne
         optionsList={indoorThermalPreferenceList}
         value={indoorThermalPreference}
         onChange={(e: any) => setIndoorThermalPreference(e.target.value)}
+        err={trySubmit && indoorThermalPreference === ''}
       />
       <div className="baseinput-div">
         <BaseInputField
